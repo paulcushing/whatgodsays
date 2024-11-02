@@ -1,14 +1,26 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import LoadData from "../loadData";
 import Error from "next/error";
 
 export default function Verse({ params }: { params: { slug: string } }) {
   const [isClient, setIsClient] = useState(false);
+  const verseContainerRef = useRef(null);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
+  
+  // This useEffect is needed to apply the `focus` class on each verse to ensure they receive the same focus styles.
+  // This waits for the `isClient` state to be set so that we know the first component update has completed.
+  useEffect(() => {
+    if (verseContainerRef.current) {
+      const element: HTMLDivElement = verseContainerRef.current;
+      Object.values(element.children).forEach(child => {
+        if (child.tagName === 'A') child.classList.add('focus', 'duration-200', 'rounded-lg', 'transition');
+      })
+    }
+  }, [isClient]);
 
   const { slug } = params;
   const page = parseInt(slug);
@@ -71,13 +83,14 @@ export default function Verse({ params }: { params: { slug: string } }) {
                   : neutral}
               </span>
             </p>
-            <p
+            <div
+              ref={verseContainerRef}
               className="py-5 mb-5 text-gray-900 underline text-xl lg:text-2xl"
               dangerouslySetInnerHTML={{ __html: verse }}
-            ></p>
+            ></div>
             {canShare && (
               <button
-                className="py-5 mb-5 text-gray-500 text-xl lg:text-2xl"
+                className="py-5 mb-5 text-gray-500 text-xl lg:text-2xl duration-200 rounded-lg transition focus"
                 onClick={shareThis}
               >
                 <svg
@@ -102,13 +115,17 @@ export default function Verse({ params }: { params: { slug: string } }) {
               <a
                 href={prevPage}
                 aria-label="Back"
-                className="touch-pan-y inline-flex items-center justify-center h-12 px-6 mr-2 font-medium tracking-wide text-white transition duration-200 bg-gray-900 rounded-lg hover:bg-gray-900 focus:shadow-outline focus:outline-none"
+                className="touch-pan-y inline-flex items-center justify-center h-12 px-6 mr-2 font-medium tracking-wide text-white transition duration-200 bg-gray-900 rounded-lg hover:bg-gray-900 focus"
               >
                 Back
               </a>
               {page < 50 && (
                 <>
-                  <a href="/" aria-label="Return Home">
+                  <a
+                    href="/"
+                    aria-label="Return Home"
+                    className='duration-200 rounded-lg touch-pan-y tracking-wide transition focus'
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       height="3em"
@@ -119,7 +136,7 @@ export default function Verse({ params }: { params: { slug: string } }) {
                   </a>
                   <a
                     href={nextPage}
-                    className="touch-pan-y inline-flex items-center justify-center h-12 px-6 ml-2 font-medium tracking-wide text-white transition duration-200 bg-gray-900 rounded-lg hover:bg-gray-900 focus:shadow-outline focus:outline-none"
+                    className="touch-pan-y inline-flex items-center justify-center h-12 px-6 ml-2 font-medium tracking-wide text-white transition duration-200 bg-gray-900 rounded-lg hover:bg-gray-900 focus"
                     data-rounded="rounded-lg"
                     data-primary="gray-900"
                     aria-label="Next"
@@ -131,7 +148,7 @@ export default function Verse({ params }: { params: { slug: string } }) {
               {page >= 50 && (
                 <a
                   href={homePage}
-                  className="touch-pan-y inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 bg-gray-900 rounded-lg hover:bg-gray-900 focus:shadow-outline focus:outline-none"
+                  className="touch-pan-y inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 bg-gray-900 rounded-lg hover:bg-gray-900 focus"
                   data-rounded="rounded-lg"
                   data-primary="gray-900"
                   aria-label="Return Home"
