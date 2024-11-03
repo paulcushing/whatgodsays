@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.focus {
+  @apply focus:outline-none;
+  @apply focus:ring;
+  @apply focus:ring-blue-500;
+}
