@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Personalization from "@/app/personalization";
 import LoadData from "@/app/loadData";
+import ContactForm from "@/app/contactform";
 
 export default function Home() {
   return (
@@ -44,7 +45,9 @@ export default function Home() {
               Built for God&apos;s glory and YOUR joy!
             </p>
             <ul className="flex flex-row justify-center pb-3 -ml-4 -mr-4 text-sm">
-              <li>{/* <ContactForm /> */}</li>
+              <li>
+                <ContactForm />
+              </li>
             </ul>
           </div>
         </div>

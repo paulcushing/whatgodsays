@@ -64,19 +64,17 @@ export default function Personalization() {
             id="name"
             type="text"
             placeholder={name}
-            className="input input-bordered input-secondary w-full max-w-xs mb-2"
+            className="input input-bordered input-primary w-full max-w-xs mb-2"
             value={name}
             onChange={(e) => storeName(e.target.value)}
           />
 
           <select
             className="select select-primary w-full max-w-xs"
-            defaultValue={gender}
+            value={gender}
             onChange={(e) => storeGender(e.target.value)}
           >
-            <option disabled selected>
-              Select Gender
-            </option>
+            <option disabled>Select Gender</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
           </select>
