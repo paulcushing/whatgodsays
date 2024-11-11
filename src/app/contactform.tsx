@@ -106,11 +106,17 @@ export default function ContactForm() {
         )}
       </div>
       <div className="w-full flex justify-center">
-        <button type="submit" className="btn btn-primary mt-8 px-8">
+        <button type="submit" className="btn btn-primary my-8 px-8">
           Send
         </button>
       </div>
-      {sent && <p className="text-green-600">Message sent!</p>}
+      {sent && (
+        <div className="w-full flex justify-center">
+          <p className="text-black text-2xl bg-green-300 rounded-full px-8 py-4">
+            Message sent!
+          </p>
+        </div>
+      )}
     </form>
   );
 }
