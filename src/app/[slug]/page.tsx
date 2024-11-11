@@ -43,7 +43,8 @@ export default function Verse({ params }: { params: { slug: string } }) {
   const personalize = localStorage.getItem("personalize") === "true";
   const name = localStorage.getItem("name") || "";
   const gender = localStorage.getItem("gender") || "male";
-  const randomize = localStorage.getItem("order") === "random";
+  // TODO: Setting to random until other orders are implemented
+  const randomize = localStorage.getItem("order") === "random" || true;
 
   const parsedData = JSON.parse(data);
   const { feminine, masculine, neutral, verse } = parsedData[page - 1];
