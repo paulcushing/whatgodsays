@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { AnimatePresence } from "framer-motion";
 
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -26,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="wgstheme">
       <head>
         <link
           rel="apple-touch-icon"
@@ -54,7 +55,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <AnimatePresence mode="wait">{children}</AnimatePresence>
         <SpeedInsights />
       </body>
     </html>

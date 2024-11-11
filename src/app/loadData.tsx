@@ -1,7 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-
 const data = [
   {
     neutral:
@@ -100,7 +98,7 @@ const data = [
     masculine: "{name} is dead to sin.",
     feminine: "{name} is dead to sin.",
     verse:
-      '<a href="https://www.bible.com/bible/59/ROM.6" target="_blank">Romans 6:2 & 11</a>; <a href="https://www.bible.com/bible/59/1PE.2.24" target="_blank">1 Peter 2:24</a>',
+      '<a href="https://www.bible.com/bible/59/ROM.6" target="_blank">Romans 6:2 & 11</a><br /><a href="https://www.bible.com/bible/59/1PE.2.24" target="_blank">1 Peter 2:24</a>',
   },
   {
     neutral: "I am more than a conqueror.",
@@ -201,7 +199,7 @@ const data = [
     masculine: "{name} is chosen.",
     feminine: "{name} is chosen.",
     verse:
-      '<a href="https://www.bible.com/bible/59/1TH.1.4" target="_blank">1 Thessalonians 1:4</a>; <a href="https://www.bible.com/bible/59/EPH.1.4" target="_blank">Ephesians 1:4</a>; <a href="https://www.bible.com/bible/59/1PE.2.9" target="_blank">1 Peter 2:9</a>',
+      '<a href="https://www.bible.com/bible/59/1TH.1.4" target="_blank">1 Thessalonians 1:4</a><br /><a href="https://www.bible.com/bible/59/EPH.1.4" target="_blank">Ephesians 1:4</a><br /><a href="https://www.bible.com/bible/59/1PE.2.9" target="_blank">1 Peter 2:9</a>',
   },
   {
     neutral: "I am an ambassador of Christ.",
@@ -224,21 +222,21 @@ const data = [
     masculine: "{name} is the apple of his Father's eye.",
     feminine: "{name} is the apple of her Father's eye.",
     verse:
-      '<a href="https://www.bible.com/bible/59/DEU.32.10" target="_blank">Deuteronomy 32:10</a>; <a href="https://www.bible.com/bible/59/PSA.17.8" target="_blank">Psalm 17:8</a>',
+      '<a href="https://www.bible.com/bible/59/DEU.32.10" target="_blank">Deuteronomy 32:10</a><br /><a href="https://www.bible.com/bible/59/PSA.17.8" target="_blank">Psalm 17:8</a>',
   },
   {
     neutral: "I am healed by the stripes of Jesus.",
     masculine: "{name} is healed by the stripes of Jesus.",
     feminine: "{name} is healed by the stripes of Jesus.",
     verse:
-      '<a href="https://www.bible.com/bible/59/1PE.2.24" target="_blank">1 Peter 2:24</a>; <a href="https://www.bible.com/bible/59/ISA.53.6" target="_blank">Isaiah 53:6</a>',
+      '<a href="https://www.bible.com/bible/59/1PE.2.24" target="_blank">1 Peter 2:24</a><br /><a href="https://www.bible.com/bible/59/ISA.53.6" target="_blank">Isaiah 53:6</a>',
   },
   {
     neutral: "I am being changed into His image.",
     masculine: "{name} is being changed into His image.",
     feminine: "{name} is being changed into His image.",
     verse:
-      '<a href="https://www.bible.com/bible/59/2CO.3.18" target="_blank">2 Corinthians 3:18</a>; <a href="https://www.bible.com/bible/59/PHP.1.6" target="_blank">Philippians 1:6</a>',
+      '<a href="https://www.bible.com/bible/59/2CO.3.18" target="_blank">2 Corinthians 3:18</a><br /><a href="https://www.bible.com/bible/59/PHP.1.6" target="_blank">Philippians 1:6</a>',
   },
   {
     neutral: "I am raised up with Christ and am seated in heavenly places.",
@@ -254,14 +252,14 @@ const data = [
     masculine: "{name} is beloved of God.",
     feminine: "{name} is beloved of God.",
     verse:
-      '<a href="https://www.bible.com/bible/59/COL.3.12" target="_blank">Colossians 3:12</a>; <a href="https://www.bible.com/bible/59/ROM.1.7" target="_blank">Romans 1:7</a>; <a href="https://www.bible.com/bible/59/1TH.1.4" target="_blank">1 Thessalonians 1:4</a>',
+      '<a href="https://www.bible.com/bible/59/COL.3.12" target="_blank">Colossians 3:12</a><br /><a href="https://www.bible.com/bible/59/ROM.1.7" target="_blank">Romans 1:7</a><br /><a href="https://www.bible.com/bible/59/1TH.1.4" target="_blank">1 Thessalonians 1:4</a>',
   },
   {
     neutral: "I have the mind of Christ.",
     masculine: "{name} has the mind of Christ.",
     feminine: "{name} has the mind of Christ.",
     verse:
-      '<a href="https://www.bible.com/bible/59/PHP.2.5" target="_blank">Philippians 2:5</a>; <a href="https://www.bible.com/bible/59/1CO.2.16" target="_blank">1 Corinthians 2:16</a>',
+      '<a href="https://www.bible.com/bible/59/PHP.2.5" target="_blank">Philippians 2:5</a><br /><a href="https://www.bible.com/bible/59/1CO.2.16" target="_blank">1 Corinthians 2:16</a>',
   },
   {
     neutral: "I have obtained an inheritance.",
@@ -289,7 +287,7 @@ const data = [
     masculine: "{name} has everlasting life and will not be condemned.",
     feminine: "{name} has everlasting life and will not be condemned.",
     verse:
-      '<a href="https://www.bible.com/bible/59/JHN.5.24" target="_blank">John 5:24</a>; <a href="https://www.bible.com/bible/59/JHN.6.47" target="_blank">John 6:47</a>',
+      '<a href="https://www.bible.com/bible/59/JHN.5.24" target="_blank">John 5:24</a><br /><a href="https://www.bible.com/bible/59/JHN.6.47" target="_blank">John 6:47</a>',
   },
   {
     neutral: "I have the peace of God that transcends all understanding.",
@@ -306,7 +304,7 @@ const data = [
     feminine:
       "{name} has received power-the power of the Holy Spirit; power to lay hands on the sick and see them recover; power to cast out demons; power over all the power of the enemy; nothing shall by any means hurt {name}.",
     verse:
-      '<a href="https://www.bible.com/bible/59/EPH.6.10" target="_blank">Mark 16:17-18</a>; <a href="https://www.bible.com/bible/59/EPH.6.10" target="_blank">Luke 10:17-19</a>',
+      '<a href="https://www.bible.com/bible/59/EPH.6.10" target="_blank">Mark 16:17-18</a><br /><a href="https://www.bible.com/bible/59/EPH.6.10" target="_blank">Luke 10:17-19</a>',
   },
   {
     neutral: "I live by and in the law of the Spirit of Life in Christ Jesus.",
@@ -382,11 +380,8 @@ const data = [
 ];
 
 export default function LoadData() {
-  const router = useRouter();
   if (typeof window !== "undefined" && !localStorage.getItem("data")) {
-    console.log("Loading data...");
     localStorage.setItem("data", JSON.stringify(data));
-    router.refresh();
   }
 
   return null;
