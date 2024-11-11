@@ -3,8 +3,11 @@ import { useState, useEffect, useRef } from "react";
 import LoadData from "../loadData";
 import Error from "next/error";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 export default function Verse({ params }: { params: { slug: string } }) {
+  const router = useRouter();
+
   const [isClient, setIsClient] = useState(false);
   const verseContainerRef = useRef(null);
 
@@ -40,14 +43,19 @@ export default function Verse({ params }: { params: { slug: string } }) {
   const personalize = localStorage.getItem("personalize") === "true";
   const name = localStorage.getItem("name") || "";
   const gender = localStorage.getItem("gender") || "male";
+  const randomize = localStorage.getItem("order") === "random";
 
   const parsedData = JSON.parse(data);
   const { feminine, masculine, neutral, verse } = parsedData[page - 1];
 
-  const homePage = "/";
-  const prevPage = slug === "1" ? "/" : "/" + (parseInt(slug) - 1).toString();
+  let randomPage = Math.floor(Math.random() * parsedData.length);
+  while (page === randomPage + 1) {
+    randomPage = Math.floor(Math.random() * parsedData.length);
+  }
 
-  const nextPage = "/" + (parseInt(slug) + 1).toString();
+  const nextPage = randomize
+    ? "/" + (randomPage + 1).toString()
+    : "/" + (parseInt(slug) + 1).toString();
 
   const shareData = {
     title: "What God Says About Me",
@@ -57,7 +65,7 @@ export default function Verse({ params }: { params: { slug: string } }) {
 
   const canShare = navigator.canShare(shareData);
 
-  async function shareThis() {
+  const shareThis = async () => {
     const shareData = {
       title: "What God Says About Me",
       text: "A reminder of who God says you are.",
@@ -74,7 +82,7 @@ export default function Verse({ params }: { params: { slug: string } }) {
       }
       console.log("Share error: " + err);
     }
-  }
+  };
 
   return (
     <motion.div
@@ -125,50 +133,35 @@ export default function Verse({ params }: { params: { slug: string } }) {
           <div className="flex justify-center p-8 bg-white">
             <div className="flex flex-col items-start justify-center w-full lg:max-w-lg">
               <div className="flex w-full justify-between">
-                <a
-                  href={prevPage}
+                <button
+                  onClick={() => router.back()}
                   aria-label="Back"
                   className="touch-pan-y inline-flex items-center justify-center h-12 px-6 mr-2 font-medium tracking-wide text-white transition duration-200 bg-gray-900 rounded-lg hover:bg-gray-900 focus"
                 >
                   Back
-                </a>
-                {page < 50 && (
-                  <>
-                    <a
-                      href="/"
-                      aria-label="Return Home"
-                      className="duration-200 rounded-lg touch-pan-y tracking-wide transition focus"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        height="3em"
-                        viewBox="0 0 576 512"
-                      >
-                        <path d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z" />
-                      </svg>
-                    </a>
-                    <a
-                      href={nextPage}
-                      className="touch-pan-y inline-flex items-center justify-center h-12 px-6 ml-2 font-medium tracking-wide text-white transition duration-200 bg-gray-900 rounded-lg hover:bg-gray-900 focus"
-                      data-rounded="rounded-lg"
-                      data-primary="gray-900"
-                      aria-label="Next"
-                    >
-                      Next
-                    </a>
-                  </>
-                )}
-                {page >= 50 && (
-                  <a
-                    href={homePage}
-                    className="touch-pan-y inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 bg-gray-900 rounded-lg hover:bg-gray-900 focus"
-                    data-rounded="rounded-lg"
-                    data-primary="gray-900"
-                    aria-label="Return Home"
+                </button>
+                <a
+                  href="/"
+                  aria-label="Return Home"
+                  className="duration-200 rounded-lg touch-pan-y tracking-wide transition focus"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="3em"
+                    viewBox="0 0 576 512"
                   >
-                    Home
-                  </a>
-                )}
+                    <path d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z" />
+                  </svg>
+                </a>
+                <a
+                  href={nextPage}
+                  className="touch-pan-y inline-flex items-center justify-center h-12 px-6 ml-2 font-medium tracking-wide text-white transition duration-200 bg-gray-900 rounded-lg hover:bg-gray-900 focus"
+                  data-rounded="rounded-lg"
+                  data-primary="gray-900"
+                  aria-label="Next"
+                >
+                  Next
+                </a>
               </div>
             </div>
           </div>

@@ -1,7 +1,7 @@
-import Link from "next/link";
 import Personalization from "@/app/personalization";
 import LoadData from "@/app/loadData";
-import ContactForm from "@/app/contactform";
+import Begin from "@/app/begin";
+import Footer from "@/app/footer";
 
 export default function Home() {
   return (
@@ -25,12 +25,7 @@ export default function Home() {
 
             <Personalization />
             <div className="flex items-center mt-6">
-              <Link
-                href="/1"
-                className="touch-pan-y inline-flex items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide text-white transition duration-200 bg-gray-900 rounded-lg hover:bg-gray-900 focus"
-              >
-                Get started
-              </Link>
+              <Begin />
             </div>
           </div>
         </div>
@@ -38,20 +33,7 @@ export default function Home() {
           <p>&nbsp;</p>
         </div>
       </section>
-      <footer className="py-10 bg-black z-10">
-        <div className="px-10 mx-auto max-w-7xl">
-          <div className="flex flex-col justify-between text-center md:flex-row">
-            <p className="order-last text-sm leading-tight text-gray-400 md:order-first">
-              Built for God&apos;s glory and YOUR joy!
-            </p>
-            <ul className="flex flex-row justify-center pb-3 -ml-4 -mr-4 text-sm">
-              <li>
-                <ContactForm />
-              </li>
-            </ul>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

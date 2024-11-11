@@ -1,6 +1,6 @@
-# WhoAmI
+# What God Says About You
 
-A simple app for reminding you who Jesus says that you are, when you're following Him. Created using NextJS.
+[WhatGodSaysAbout.Me](https://whatgodsaysabout.me) is a simple app for reminding you who Jesus says that you are, when you're following Him. Created using NextJS.
 
 ## Contribute
 
