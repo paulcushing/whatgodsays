@@ -43,12 +43,11 @@ export default function Page() {
             </h5>
             <p className="py-5 mb-5 text-gray-600 lg:text-xl w-full">
               We are super excited that you&apos;ve found yourself here. This
-              super simple web app has just one purpose. It&apos;s here to
-              remind you that you are SO loved. Jesus didn&apos;t promise His
-              followers a life of ease, but He did offer us adoption as sons and
-              daughters of the Father and Creator of the universe. God made you.
-              God cares about you, God loves you, and He wants a relationship
-              with you.
+              simple web app has just one purpose. It&apos;s here to remind you
+              that you are SO loved. Jesus didn&apos;t promise His followers a
+              life of ease, but He did offer us adoption as sons and daughters
+              of the Father and Creator of the universe. God made you. God cares
+              about you, God loves you, and He wants a relationship with you.
             </p>
           </div>
         </div>
