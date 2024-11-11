@@ -1,4 +1,4 @@
-import ContactForm from "@/app/contactForm";
+import ContactForm from "@/app/contactform";
 import Link from "next/link";
 import Footer from "@/app/footer";
 
