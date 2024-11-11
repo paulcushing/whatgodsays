@@ -4,6 +4,7 @@ import "./globals.css";
 import { AnimatePresence } from "framer-motion";
 
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -57,6 +58,7 @@ export default function RootLayout({
       >
         <AnimatePresence mode="wait">{children}</AnimatePresence>
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
