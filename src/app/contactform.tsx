@@ -26,6 +26,7 @@ export default function ContactForm() {
       headers: {
         origin: "https://whatgodsaysabout.me",
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_MAILTOKEN}`,
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     })
