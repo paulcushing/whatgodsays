@@ -14,6 +14,7 @@ export default function InstallPrompt() {
   }
 
   useEffect(() => {
+    /* eslint-disable @typescript-eslint/no-explicit-any */
     setIsIOS(
       /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream
     );
@@ -33,13 +34,11 @@ export default function InstallPrompt() {
           <p>
             To install this app on your iOS device, tap the share button
             <span role="img" aria-label="share icon">
-              {" "}
-              ⎋{" "}
+              &nbsp; ⎋&nbsp;
             </span>
-            and then "Add to Home Screen"
+            and then &quot;Add to Home Screen&quot;
             <span role="img" aria-label="plus icon">
-              {" "}
-              ➕{" "}
+              &nbsp; ➕&nbsp;
             </span>
             .
           </p>
