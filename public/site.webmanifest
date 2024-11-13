@@ -22,5 +22,21 @@
 	"orientation": "portrait",
 	"dir": "ltr",
 	"lang": "en-US",
-	"scope": "https://whatgodsaysabout.me/"
+	"scope": "https://whatgodsaysabout.me/",
+	"screenshots": [
+        {
+            "src": "images/home.jpg",
+            "sizes": "720x1280",
+            "type": "image/jpg",
+			"form_factor": "narrow",
+            "label": "Home screen on narrow screen"
+        },
+        {
+            "src": "images/homewide.jpg",
+            "sizes": "1280x720",
+            "type": "image/jpg",
+            "form_factor": "wide",
+            "label": "Home screen on wide screen"
+        }
+    ]
 }

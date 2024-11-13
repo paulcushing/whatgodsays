@@ -3,6 +3,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { AnimatePresence } from "framer-motion";
 
+import InstallPrompt from "./installprompt";
+import RegisterSW from "./registersw";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 
@@ -56,6 +58,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <RegisterSW />
+        <InstallPrompt />
         <AnimatePresence mode="wait">{children}</AnimatePresence>
         <SpeedInsights />
         <Analytics />

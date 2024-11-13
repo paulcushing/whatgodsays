@@ -5,6 +5,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "dev-https": "next dev --experimental-https",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
