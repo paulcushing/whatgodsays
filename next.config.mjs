@@ -32,7 +32,7 @@ const nextConfig = {
             },
             {
               key: 'Content-Security-Policy',
-              value: "default-src 'self'; script-src 'self'; connect-src 'self' va.vercel-scripts.com",
+              value: "default-src 'self'; script-src 'self'; connect-src 'self' va.vercel-scripts.com api.paulcushing.dev",
             },
           ],
         },
