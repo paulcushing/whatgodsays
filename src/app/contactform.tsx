@@ -6,6 +6,7 @@ interface FormData {
   name: string;
   email: string;
   message: string;
+  site: string;
 }
 
 export default function ContactForm() {
@@ -19,11 +20,7 @@ export default function ContactForm() {
   const [sent, setSent] = useState(false);
 
   const onSubmit = (data: FormData) => {
-    const formData = new FormData();
-    formData.append("name", data.name);
-    formData.append("email", data.email);
-    formData.append("message", data.message);
-    formData.append("site", "whatgodsaysabout.me");
+    data.site = "whatgodsaysabout.me";
 
     const apiUrl = "https://api.paulcushing.dev/api/v1/mail/send/contact";
     fetch(apiUrl, {
@@ -32,7 +29,7 @@ export default function ContactForm() {
         origin: "https://whatgodsaysabout.me",
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_MAILTOKEN}`,
       },
-      body: formData,
+      body: JSON.stringify(data),
     })
       .then((response) => {
         if (response.ok) {
