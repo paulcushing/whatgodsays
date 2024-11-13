@@ -20,8 +20,6 @@ export default function ContactForm() {
   const [sent, setSent] = useState(false);
 
   const onSubmit = (data: FormData) => {
-    data.site = "whatgodsaysabout.me";
-
     const apiUrl = "https://api.paulcushing.dev/api/v1/mail/send/contact";
     fetch(apiUrl, {
       method: "POST",
@@ -102,6 +100,12 @@ export default function ContactForm() {
           <p className="errorMsg">Message is required.</p>
         )}
       </div>
+      <input
+        type="hidden"
+        {...register("site", {
+          value: "whatgodsaysabout.me",
+        })}
+      />
       <div className="w-full flex justify-center">
         <button type="submit" className="btn btn-primary my-8 px-8">
           Send
