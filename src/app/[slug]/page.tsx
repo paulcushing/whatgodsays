@@ -148,7 +148,7 @@ export default function Verse({ params }: { params: { slug: string } }) {
 
   const { personalize, name, gender } = settings;
 
-  const { id, feminine, masculine, neutral, verse } = parsedData[page - 1];
+  const { feminine, masculine, neutral, verse } = parsedData[page - 1];
 
   const shareData = {
     title: "What God Says About Me",
@@ -156,7 +156,10 @@ export default function Verse({ params }: { params: { slug: string } }) {
     url: "https://whatgodsaysabout.me/" + slug,
   };
 
-  const canShare = typeof navigator !== "undefined" && typeof navigator.canShare === "function" ? navigator.canShare(shareData) : false;
+  const canShare =
+    typeof navigator !== "undefined" && typeof navigator.canShare === "function"
+      ? navigator.canShare(shareData)
+      : false;
 
   const shareThis = async () => {
     const shareData = {
