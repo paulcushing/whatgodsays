@@ -1,5 +1,17 @@
 "use client";
 
+const getNextPage = (current: number, length: number, randomize: boolean) => {
+  if (randomize) {
+    let randomPage = Math.floor(Math.random() * length);
+    while (current === randomPage + 1) {
+      randomPage = Math.floor(Math.random() * length);
+    }
+    return "/" + (randomPage + 1).toString();
+  } else {
+    return current < length ? "/" + (current + 1).toString() : "/1";
+  }
+};
+
 export default function Begin() {
   const start = () => {
     // set default to randomize
@@ -8,8 +20,7 @@ export default function Begin() {
 
     const parsedData = data ? JSON.parse(data) : [];
 
-    const randomPage = Math.floor(Math.random() * parsedData.length);
-    const nextPage = "/" + (randomPage + 1).toString();
+    const nextPage = getNextPage(1, parsedData.length, true);
     window.location.href = nextPage;
   };
 

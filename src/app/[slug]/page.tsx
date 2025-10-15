@@ -1,19 +1,77 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import LoadData from "../loadData";
-import Error from "next/error";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import DOMPurify from "dompurify";
+
+const RECENT_PAGES_KEY = "recentPages";
+const MAX_RECENT_PAGES = 10;
+
+const getRecentPages = (): number[] => {
+  if (typeof window === "undefined") return [];
+  const stored = localStorage.getItem(RECENT_PAGES_KEY);
+  return stored ? JSON.parse(stored) : [];
+};
+
+const addToRecentPages = (pageNumber: number) => {
+  const recent = getRecentPages();
+  // Remove the page if it already exists to avoid duplicates
+  const filtered = recent.filter((p) => p !== pageNumber);
+  // Add to the beginning of the array
+  const updated = [pageNumber, ...filtered];
+  // Keep only the last MAX_RECENT_PAGES
+  const trimmed = updated.slice(0, MAX_RECENT_PAGES);
+  localStorage.setItem(RECENT_PAGES_KEY, JSON.stringify(trimmed));
+};
+
+const getNextPage = (current: number, length: number, randomize: boolean) => {
+  if (randomize) {
+    const recentPages = getRecentPages();
+    let randomPage = Math.floor(Math.random() * length);
+    let attempts = 0;
+    const maxAttempts = 100; // Prevent infinite loop
+
+    // Keep generating random pages until we find one not in recent history
+    // or we've tried too many times (in case most pages are in history)
+    while (
+      (current === randomPage + 1 || recentPages.includes(randomPage + 1)) &&
+      attempts < maxAttempts
+    ) {
+      randomPage = Math.floor(Math.random() * length);
+      attempts++;
+    }
+
+    return "/" + (randomPage + 1).toString();
+  } else {
+    return current < length ? "/" + (current + 1).toString() : "/1";
+  }
+};
 
 export default function Verse({ params }: { params: { slug: string } }) {
   const router = useRouter();
 
   const [isClient, setIsClient] = useState(false);
+  const [settings, setSettings] = useState({
+    personalize: false,
+    name: "",
+    gender: "male",
+    order: "random",
+    data: "",
+  });
+
   const verseContainerRef = useRef(null);
 
   useEffect(() => {
     setIsClient(true);
-  }, []);
+
+    // Add current page to recent history
+    const { slug } = params;
+    const pageNumber = parseInt(slug);
+    if (!isNaN(pageNumber)) {
+      addToRecentPages(pageNumber);
+    }
+  }, [params]);
 
   // This useEffect is needed to apply the `focus` class on each verse to ensure they receive the same focus styles.
   // This waits for the `isClient` state to be set so that we know the first component update has completed.
@@ -32,31 +90,65 @@ export default function Verse({ params }: { params: { slug: string } }) {
     }
   }, [isClient]);
 
+  // Add keyboard navigation for left/right arrow keys
+  useEffect(() => {
+    if (!isClient) return; // Only add listeners when client-side
+
+    setSettings({
+      personalize: localStorage.getItem("personalize") === "true",
+      name: localStorage.getItem("name") || "",
+      gender: localStorage.getItem("gender") || "male",
+      order: localStorage.getItem("order") || "random",
+      data: localStorage.getItem("data") || "",
+    });
+
+    const { slug } = params;
+    const data = localStorage.getItem("data");
+
+    if (!data) return; // Don't add keyboard listeners if no data
+
+    const parsedData = JSON.parse(data);
+    const page = parseInt(slug);
+    const randomize = localStorage.getItem("order") === "random" || true;
+
+    const nextPage = getNextPage(page, parsedData.length, randomize);
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        router.back();
+      } else if (event.key === "ArrowRight") {
+        event.preventDefault();
+        window.location.href = nextPage;
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isClient, params, router]);
+
+  if (!isClient) return null;
+
   const { slug } = params;
   const page = parseInt(slug);
-  const data = isClient ? localStorage.getItem("data") : null;
+  const data = localStorage.getItem("data");
 
   if (!data) {
     return <LoadData />;
   }
 
-  const personalize = localStorage.getItem("personalize") === "true";
-  const name = localStorage.getItem("name") || "";
-  const gender = localStorage.getItem("gender") || "male";
-  // TODO: Setting to random until other orders are implemented
+  const parsedData = JSON.parse(data);
+
   const randomize = localStorage.getItem("order") === "random" || true;
 
-  const parsedData = JSON.parse(data);
-  const { feminine, masculine, neutral, verse } = parsedData[page - 1];
+  const nextPage = getNextPage(page, parsedData.length, randomize);
 
-  let randomPage = Math.floor(Math.random() * parsedData.length);
-  while (page === randomPage + 1) {
-    randomPage = Math.floor(Math.random() * parsedData.length);
-  }
+  const { personalize, name, gender } = settings;
 
-  const nextPage = randomize
-    ? "/" + (randomPage + 1).toString()
-    : "/" + (parseInt(slug) + 1).toString();
+  const { id, feminine, masculine, neutral, verse } = parsedData[page - 1];
 
   const shareData = {
     title: "What God Says About Me",
@@ -64,7 +156,7 @@ export default function Verse({ params }: { params: { slug: string } }) {
     url: "https://whatgodsaysabout.me/" + slug,
   };
 
-  const canShare = navigator.canShare(shareData);
+  const canShare = !navigator.canShare ? false : navigator.canShare(shareData);
 
   const shareThis = async () => {
     const shareData = {
@@ -85,39 +177,61 @@ export default function Verse({ params }: { params: { slug: string } }) {
     }
   };
 
+  // Sanitize the name to prevent XSS
+  const sanitizedName = DOMPurify.sanitize(name);
+
+  const displayVerse = personalize
+    ? gender === "female"
+      ? feminine.replaceAll(
+          "{name}",
+          `<span class="font-black">${sanitizedName}</span>`
+        )
+      : masculine.replaceAll(
+          "{name}",
+          `<span class="font-black">${sanitizedName}</span>`
+        )
+    : neutral;
+
+  // Sanitize the verse content as well
+  const sanitizedVerse = DOMPurify.sanitize(verse);
+  const sanitizedDisplayVerse = DOMPurify.sanitize(displayVerse);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.3, delay: 0, ease: "easeInOut" }}
     >
-      <div className="flex flex-col w-full min-h-screen m-0 p-0 justify-between mb-24">
-        <section className="flex flex-col w-full overflow-hidden bg-white sm:mx-auto mb-auto">
-          <div className="flex justify-center p-8 bg-white lg:py-16 lg:px-2 lg:pl-10">
+      <div className="absolute w-full h-full">
+        <img
+          className="object-cover object-center w-full h-full blur-sm contrast-75 scale-105 opacity-50"
+          src="/images/backgrounds/IMG_5690.jpg"
+        />
+      </div>
+      <div className="relative z-50 flex flex-col w-full min-h-screen m-0 p-0 justify-between mb-24">
+        <section className="flex flex-col w-full overflow-hidden sm:mx-auto mb-auto">
+          <div className="flex justify-center p-8 lg:py-16 lg:px-2 lg:pl-10">
             <div className="flex flex-col items-start justify-center w-full lg:max-w-2xl">
-              <p className="py-5 mb-5 text-gray-600 text-3xl lg:text-6xl">
-                <span className="font-bold">
-                  {personalize
-                    ? gender === "female"
-                      ? feminine.replaceAll("{name}", name)
-                      : masculine.replaceAll("{name}", name)
-                    : neutral}
-                </span>
+              <p className="py-5 mb-5 text-gray-900 text-3xl lg:text-6xl">
+                <span
+                  className="font-bold"
+                  dangerouslySetInnerHTML={{ __html: sanitizedDisplayVerse }}
+                ></span>
               </p>
               <div
                 ref={verseContainerRef}
-                className="py-5 mb-5 text-gray-900 underline text-xl lg:text-2xl"
-                dangerouslySetInnerHTML={{ __html: verse }}
+                className="py-5 mb-5 text-gray-800 hover:text-gray-900 underline text-xl lg:text-2xl"
+                dangerouslySetInnerHTML={{ __html: sanitizedVerse }}
               ></div>
               {canShare && (
                 <button
-                  className="py-5 mb-5 text-gray-500 text-xl lg:text-2xl duration-200 rounded-lg transition focus"
+                  className="py-5 mb-5 text-gray-600 hover:text-gray-800 text-xl lg:text-2xl duration-200 rounded-lg transition focus"
                   onClick={shareThis}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="inline"
+                    className="inline mr-2"
                     height="1em"
                     viewBox="0 0 576 512"
                     fill="currentColor"
@@ -131,7 +245,7 @@ export default function Verse({ params }: { params: { slug: string } }) {
           </div>
         </section>
         <section className="flex flex-col w-full overflow-hidden fixed left-0 bottom-0 sm:mx-auto">
-          <div className="flex justify-center p-8 bg-white">
+          <div className="flex justify-center p-8">
             <div className="flex flex-col items-start justify-center w-full lg:max-w-lg">
               <div className="flex w-full justify-between">
                 <button
