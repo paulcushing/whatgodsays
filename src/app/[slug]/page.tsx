@@ -156,7 +156,7 @@ export default function Verse({ params }: { params: { slug: string } }) {
     url: "https://whatgodsaysabout.me/" + slug,
   };
 
-  const canShare = !navigator.canShare ? false : navigator.canShare(shareData);
+  const canShare = typeof navigator !== "undefined" && typeof navigator.canShare === "function" ? navigator.canShare(shareData) : false;
 
   const shareThis = async () => {
     const shareData = {
