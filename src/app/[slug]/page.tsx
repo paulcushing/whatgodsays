@@ -207,6 +207,7 @@ export default function Verse({ params }: { params: { slug: string } }) {
         <img
           className="object-cover object-center w-full h-full blur-sm contrast-75 scale-105 opacity-50"
           src="/images/backgrounds/IMG_5690.jpg"
+          alt=""
         />
       </div>
       <div className="relative z-50 flex flex-col w-full min-h-screen m-0 p-0 justify-between mb-24">
