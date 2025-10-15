@@ -206,13 +206,7 @@ export default function Verse({ params }: { params: { slug: string } }) {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3, delay: 0, ease: "easeInOut" }}
     >
-      <div className="absolute w-full h-full">
-        <img
-          className="object-cover object-center w-full h-full blur-sm contrast-75 scale-105 opacity-50"
-          src="/images/backgrounds/IMG_5690.jpg"
-          alt=""
-        />
-      </div>
+      <div className="absolute w-full h-full bg-gradient-to-t from-slate-400 to-white"></div>
       <div className="relative z-50 flex flex-col w-full min-h-screen m-0 p-0 justify-between mb-24">
         <section className="flex flex-col w-full overflow-hidden sm:mx-auto mb-auto">
           <div className="flex justify-center p-8 lg:py-16 lg:px-2 lg:pl-10">
