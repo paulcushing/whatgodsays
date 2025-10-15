@@ -59,7 +59,7 @@ export default function Personalization() {
       </div>
       {personalize && (
         <>
-          <label htmlFor="name">Name:</label>
+          <label htmlFor="name">First Name:</label>
           <input
             id="name"
             type="text"
@@ -67,17 +67,23 @@ export default function Personalization() {
             className="input input-bordered input-primary w-full max-w-xs mb-2"
             value={name}
             onChange={(e) => storeName(e.target.value)}
+            aria-label="Enter your first name for personalization"
           />
 
           <select
             className="select select-primary w-full max-w-xs"
             value={gender}
             onChange={(e) => storeGender(e.target.value)}
+            aria-label="Select your gender for personalization"
           >
             <option disabled>Select Gender</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
           </select>
+
+          <p className="mt-2 text-sm text-gray-600">
+            (Your name will be inserted and pronouns will be adjusted.)
+          </p>
         </>
       )}
     </>

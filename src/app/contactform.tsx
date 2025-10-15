@@ -18,35 +18,37 @@ export default function ContactForm() {
   } = useForm<FormData>();
 
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState(false);
 
-  const onSubmit = (data: FormData) => {
-    const apiUrl = "https://api.paulcushing.dev/api/v1/mail/send/contact";
-    fetch(apiUrl, {
-      method: "POST",
-      headers: {
-        origin: "https://whatgodsaysabout.me",
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_MAILTOKEN}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => {
-        if (response.ok) {
-          console.log("Message sent");
-          setSent(true);
-          setTimeout(() => {
-            setTimeout(() => {
-              reset();
-              setSent(false);
-            }, 500);
-          }, 3000);
-        } else {
-          console.error("Error sending message");
-        }
-      })
-      .catch((error) => {
-        console.error("Error sending message", error);
+  const onSubmit = async (data: FormData) => {
+    setError(false);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
       });
+
+      if (response.ok) {
+        console.log("Message sent");
+        setSent(true);
+        setTimeout(() => {
+          setTimeout(() => {
+            reset();
+            setSent(false);
+          }, 500);
+        }, 3000);
+      } else {
+        const error = await response.json();
+        console.error("Error sending message:", error);
+        setError(true);
+      }
+    } catch (error) {
+      console.error("Error sending message", error);
+      setError(true);
+    }
   };
 
   return (
@@ -116,6 +118,13 @@ export default function ContactForm() {
         <div className="w-full flex justify-center">
           <p className="text-black text-2xl bg-green-300 rounded-full px-8 py-4">
             Message sent!
+          </p>
+        </div>
+      )}
+      {error && (
+        <div className="w-full flex justify-center">
+          <p className="text-white text-2xl bg-red-500 rounded-full px-8 py-4">
+            Failed to send message. Please try again.
           </p>
         </div>
       )}
