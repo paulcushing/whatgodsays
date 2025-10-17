@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
         Authorization: `Bearer ${process.env.MAILTOKEN}`,
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        'Origin': 'https://whatgodsays.com',
+        'Origin': 'https://whatgodsaysabout.me',
       },
       body: JSON.stringify(data),
     });
