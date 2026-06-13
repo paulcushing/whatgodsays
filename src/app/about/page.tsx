@@ -41,14 +41,26 @@ export default function Page() {
             <h5 className="mb-3 text-3xl font-extrabold leading-none sm:text-4xl lg:text-7xl">
               About
             </h5>
-            <p className="py-5 mb-5 text-gray-600 lg:text-xl w-full">
-              We are super excited that you&apos;ve found yourself here. This
-              simple web app has just one purpose. It&apos;s here to remind you
-              that you are SO loved. Jesus didn&apos;t promise His followers a
-              life of ease, but He did offer us adoption as sons and daughters
-              of the Father and Creator of the universe. God made you. God cares
-              about you, God loves you, and He wants a relationship with you.
+            <p className="pt-5 mb-5 text-gray-600 lg:text-xl w-full">
+              We&apos;re so glad you found your way here. This simple app exists
+              for one reason: to remind you of who you really are.
             </p>
+            <p className="mb-5 text-gray-600 lg:text-xl w-full">
+              Following Jesus was never a promise that life would be easy — but
+              it is an invitation into something far better. He welcomes you as a
+              beloved son or daughter of the God who made the universe, and made
+              you.
+            </p>
+            <p className="mb-5 text-gray-600 lg:text-xl w-full">
+              You are seen. You are cared for. You are deeply loved. And the One
+              who created you longs to know you.
+            </p>
+            <Link
+              href="/privacy"
+              className="touch-pan-y text-gray-600 underline decoration-slate-400 decoration-2 underline-offset-2 hover:decoration-slate-600"
+            >
+              Privacy Policy
+            </Link>
           </div>
         </div>
         <div className="flex flex-col items-start justify-center w-full lg:w-1/2 lg:max-w-2xl">
