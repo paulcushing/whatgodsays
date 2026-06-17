@@ -6,6 +6,7 @@ import InstallPrompt from "./installprompt";
 import RegisterSW from "./registersw";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
+import { ContentProvider } from "@/data/ContentProvider";
 
 const serif = Newsreader({
   subsets: ["latin"],
@@ -42,7 +43,7 @@ export default function RootLayout({
       <body className={`${serif.variable} ${sans.variable} font-sans bg-page`}>
         <RegisterSW />
         <InstallPrompt />
-        {children}
+        <ContentProvider>{children}</ContentProvider>
         <SpeedInsights />
         <Analytics />
       </body>
