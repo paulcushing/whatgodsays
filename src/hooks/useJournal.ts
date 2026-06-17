@@ -19,11 +19,6 @@ export function useJournal() {
     setReady(true);
   }, []);
 
-  const persist = useCallback((next: JournalEntry[]) => {
-    setEntries(next);
-    saveJournalEntries(next);
-  }, []);
-
   const addEntry = useCallback(
     ({ prompt, body, sourceTruthId }: AddEntryInput) => {
       const cleanBody = body.trim();

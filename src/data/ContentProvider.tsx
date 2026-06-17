@@ -5,6 +5,7 @@ import {
   useCallback,
   useContext,
   useEffect,
+  useRef,
   useState,
   type ReactNode,
 } from "react";
@@ -24,6 +25,13 @@ const RefreshContext = createContext<RefreshValue>({
 export function ContentProvider({ children }: { children: ReactNode }) {
   const [content, setContent] = useState<ContentPayload>(bundledContent);
   const [refreshing, setRefreshing] = useState(false);
+  const mounted = useRef(true);
+
+  useEffect(() => {
+    return () => {
+      mounted.current = false;
+    };
+  }, []);
 
   useEffect(() => {
     let cancelled = false;
@@ -40,13 +48,13 @@ export function ContentProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const refresh = useCallback(async () => {
-    setRefreshing(true);
+    if (mounted.current) setRefreshing(true);
     try {
       await refreshRemoteContent({ force: true });
       const payload = await loadInitialContent();
-      setContent(payload);
+      if (mounted.current) setContent(payload);
     } finally {
-      setRefreshing(false);
+      if (mounted.current) setRefreshing(false);
     }
   }, []);
 
