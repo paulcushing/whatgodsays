@@ -151,7 +151,7 @@ export async function refreshRemoteContent(options?: {
     if (!response.ok) return;
 
     const text = await response.text();
-    if (text.length > MAX_PAYLOAD_BYTES) return;
+    if (new TextEncoder().encode(text).byteLength > MAX_PAYLOAD_BYTES) return;
 
     let parsed: unknown;
     try {
