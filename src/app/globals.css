@@ -2,8 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-.focus {
-  @apply focus:outline-none;
-  @apply focus:ring;
-  @apply focus:ring-blue-500;
+:root {
+  color-scheme: light;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f6f8fb;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.focus-ring:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(96, 118, 145, 0.5);
 }
