@@ -20,7 +20,7 @@ export function BottomTabs({ activeTab }: { activeTab: AppTab }) {
           <Link
             key={tab.key}
             href={tab.href}
-            aria-label={tab.label}
+            aria-current={active ? "page" : undefined}
             className="flex min-h-[44px] min-w-[68px] flex-col items-center gap-1.5"
           >
             <span
