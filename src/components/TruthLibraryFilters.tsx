@@ -1,16 +1,12 @@
 "use client";
 
+import React from "react";
+
 import type { TruthCategory } from "@/data/verseUtils";
+import type { LibraryFilter } from "@/data/libraryFilters";
 
-type FilterGroup = "truths" | "lies";
-
-export type LibraryFilter = {
-  group: FilterGroup | null;
-  category: TruthCategory | null;
-};
-
-const truthOptions: { label: string; category: TruthCategory | null }[] = [
-  { label: "All truths", category: null },
+const filterOptions: { label: string; category: TruthCategory | null }[] = [
+  { label: "All", category: null },
   { label: "Purpose", category: "Purpose" },
   { label: "Identity", category: "Identity" },
   { label: "Fear", category: "Fear" },
@@ -21,57 +17,37 @@ const truthOptions: { label: string; category: TruthCategory | null }[] = [
   { label: "Loneliness", category: "Loneliness" },
 ];
 
-const lieOptions: { label: string; category: TruthCategory | null }[] = [
-  { label: "All struggles", category: null },
-  { label: "Purpose", category: "Purpose" },
-  { label: "Fear", category: "Fear" },
-  { label: "Anxiety", category: "Anxiety" },
-  { label: "Rejection", category: "Rejection" },
-  { label: "Shame", category: "Shame" },
-  { label: "Failure", category: "Failure" },
-  { label: "Loneliness", category: "Loneliness" },
-];
-
 export function TruthLibraryFilters({
   filter,
-  openMenu,
+  open,
+  onSelectAll,
   onToggleMenu,
   onSelect,
 }: {
   filter: LibraryFilter;
-  openMenu: FilterGroup | null;
-  onToggleMenu: (group: FilterGroup) => void;
-  onSelect: (group: FilterGroup, category: TruthCategory | null) => void;
+  open: boolean;
+  onSelectAll: () => void;
+  onToggleMenu: () => void;
+  onSelect: (category: TruthCategory) => void;
 }) {
-  const truthActive = filter.group === "truths";
-  const lieActive = filter.group === "lies";
+  const label = filter.category ? `Show: ${filter.category}` : "Show: All";
 
   return (
     <div className="mt-[22px]">
       <div className="flex gap-2.5">
-        <FilterButton
-          label={truthActive && filter.category ? filter.category : "Truths"}
-          active={truthActive}
-          onClick={() => onToggleMenu("truths")}
-        />
-        <FilterButton
-          label={lieActive && filter.category ? filter.category : "Lies"}
-          active={lieActive}
-          onClick={() => onToggleMenu("lies")}
-        />
+        <FilterButton label={label} active onClick={onToggleMenu} />
       </div>
-      {openMenu === "truths" ? (
+      {open ? (
         <Menu
-          options={truthOptions}
-          selected={truthActive ? filter.category : null}
-          onSelect={(category) => onSelect("truths", category)}
-        />
-      ) : null}
-      {openMenu === "lies" ? (
-        <Menu
-          options={lieOptions}
-          selected={lieActive ? filter.category : null}
-          onSelect={(category) => onSelect("lies", category)}
+          options={filterOptions}
+          selected={filter.category}
+          onSelect={(category) => {
+            if (category) {
+              onSelect(category);
+              return;
+            }
+            onSelectAll();
+          }}
         />
       ) : null}
     </div>

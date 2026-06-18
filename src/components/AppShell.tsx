@@ -10,8 +10,9 @@ export function AppShell({
   children: ReactNode;
 }) {
   return (
-    <div className="relative min-h-[100dvh] bg-gradient-to-b from-page via-[#d8e2ee] to-[#aebed1]">
-      <div className="mx-auto min-h-[100dvh] w-full max-w-[480px]">
+    <div className="relative isolate min-h-[100dvh] bg-page">
+      <div className="fixed inset-0 -z-10 bg-gradient-to-b from-page via-[#d8e2ee] to-[#aebed1]" />
+      <div className="relative mx-auto min-h-[100dvh] w-full max-w-[480px]">
         <main className="px-6 pt-7 pb-[132px]">{children}</main>
       </div>
       <div className="fixed inset-x-0 bottom-0">

@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import { ActionPill } from "@/components/ActionPill";
 import { AppShell } from "@/components/AppShell";
+import { BibleReferenceLink } from "@/components/BibleReferenceLink";
 import { SaveHeartButton } from "@/components/SaveHeartButton";
 import { ShareTruthCard } from "@/components/ShareTruthCard";
 import { Toast } from "@/components/Toast";
@@ -91,7 +92,7 @@ export default function FavoritesScreen() {
                   {truth.statement}
                 </p>
                 <p className="mt-3 font-serif italic text-[15px] text-accentDeep">
-                  {truth.reference}
+                  <BibleReferenceLink reference={truth.reference} className="focus-ring" />
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2.5">
                   <SaveHeartButton

@@ -4,16 +4,15 @@ import { useMemo, useState } from "react";
 
 import { ActionPill } from "@/components/ActionPill";
 import { AppShell } from "@/components/AppShell";
+import { BibleReferenceLink } from "@/components/BibleReferenceLink";
 import { CustomPromiseCompose } from "@/components/CustomPromiseCompose";
 import { SaveHeartButton } from "@/components/SaveHeartButton";
 import { ShareTruthCard } from "@/components/ShareTruthCard";
 import { Toast } from "@/components/Toast";
-import {
-  TruthLibraryFilters,
-  type LibraryFilter,
-} from "@/components/TruthLibraryFilters";
+import { TruthLibraryFilters } from "@/components/TruthLibraryFilters";
 import { useContent, useStruggles, useVerses } from "@/data/ContentProvider";
 import { getShareableTruthById, truthFromStruggle } from "@/data/content";
+import { filterLibraryCards, type LibraryFilter } from "@/data/libraryFilters";
 import type { Truth } from "@/data/verseUtils";
 import { useCustomLibrary } from "@/hooks/useCustomLibrary";
 import { useFavorites } from "@/hooks/useFavorites";
@@ -29,10 +28,10 @@ export default function LibraryScreen() {
   const [customToast, setCustomToast] = useState("");
 
   const [filter, setFilter] = useState<LibraryFilter>({
-    group: "truths",
+    group: null,
     category: null,
   });
-  const [openMenu, setOpenMenu] = useState<"truths" | "lies" | null>(null);
+  const [filterOpen, setFilterOpen] = useState(false);
   const [composeOpen, setComposeOpen] = useState(false);
 
   const truthCards = useMemo(
@@ -48,9 +47,7 @@ export default function LibraryScreen() {
   );
 
   const filtered = useMemo(() => {
-    const pool = filter.group === "lies" ? lieCards : truthCards;
-    if (!filter.category) return pool;
-    return pool.filter((truth) => truth.category === filter.category);
+    return filterLibraryCards(filter, truthCards, lieCards);
   }, [filter, lieCards, truthCards]);
 
   const shareTruth = share.shareTruthId
@@ -107,13 +104,15 @@ export default function LibraryScreen() {
 
         <TruthLibraryFilters
           filter={filter}
-          openMenu={openMenu}
-          onToggleMenu={(group) =>
-            setOpenMenu((current) => (current === group ? null : group))
-          }
-          onSelect={(group, category) => {
-            setFilter({ group, category });
-            setOpenMenu(null);
+          open={filterOpen}
+          onSelectAll={() => {
+            setFilter({ group: null, category: null });
+            setFilterOpen(false);
+          }}
+          onToggleMenu={() => setFilterOpen((current) => !current)}
+          onSelect={(category) => {
+            setFilter({ group: null, category });
+            setFilterOpen(false);
           }}
         />
 
@@ -131,7 +130,7 @@ export default function LibraryScreen() {
                   {truth.statement}
                 </p>
                 <p className="mt-3 font-serif italic text-[15px] text-accentDeep">
-                  {truth.reference}
+                  <BibleReferenceLink reference={truth.reference} className="focus-ring" />
                 </p>
                 <div className="mt-3.5 flex gap-3">
                   <SaveHeartButton
@@ -154,15 +153,13 @@ export default function LibraryScreen() {
           ) : (
             <div className="flex flex-col items-center rounded-lg bg-surface p-[26px]">
               <p className="text-[15px] text-softInk">
-                {filter.group === "lies"
-                  ? "No struggles found for this filter."
-                  : "No truths found for this filter."}
+                No library entries found for this filter.
               </p>
               <button
                 type="button"
                 onClick={() =>
                   setFilter({
-                    group: filter.group === "lies" ? "lies" : "truths",
+                    group: null,
                     category: null,
                   })
                 }
@@ -194,12 +191,12 @@ export default function LibraryScreen() {
         onSaveTruth={(truth) => {
           custom.addTruth(truth);
           setComposeOpen(false);
-          setFilter({ group: "truths", category: truth.category });
+          setFilter({ group: null, category: truth.category });
         }}
         onSaveStruggle={(struggle) => {
           custom.addStruggle(struggle);
           setComposeOpen(false);
-          setFilter({ group: "lies", category: struggle.category });
+          setFilter({ group: null, category: struggle.category });
         }}
       />
     </>
