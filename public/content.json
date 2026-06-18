@@ -1,0 +1,935 @@
+{
+  "version": "2026-06-18.1",
+  "truths": [
+    {
+      "id": "eph2-10",
+      "category": "Purpose",
+      "statement": "You are God's workmanship, created for good works.",
+      "personalized": {
+        "masculine": "{name} is God's workmanship, created for good works.",
+        "feminine": "{name} is God's workmanship, created for good works."
+      },
+      "reference": "Ephesians 2:10",
+      "verse": "For we are God’s workmanship, created in Christ Jesus to do good works, which God prepared in advance as our way of life.",
+      "reflectionQuestion": "Where might God be inviting you to live out the good works He has already prepared for you?",
+      "journalPrompt": "What would change if you truly believed you were made on purpose, for a purpose?"
+    },
+    {
+      "id": "2cor5-17",
+      "category": "Identity",
+      "statement": "You are a new creation in Christ.",
+      "personalized": {
+        "masculine": "{name} is a new creation in Christ.",
+        "feminine": "{name} is a new creation in Christ."
+      },
+      "reference": "2 Corinthians 5:17",
+      "verse": "Therefore if anyone is in Christ, he is a new creation. The old has passed away. Behold, the new has come!",
+      "reflectionQuestion": "What old name or old story is God inviting you to release?",
+      "journalPrompt": "Where do you need to remember that the old has passed away and the new has come?"
+    },
+    {
+      "id": "ps139-14",
+      "category": "Identity",
+      "statement": "You are fearfully and wonderfully made.",
+      "personalized": {
+        "masculine": "{name} is fearfully and wonderfully made.",
+        "feminine": "{name} is fearfully and wonderfully made."
+      },
+      "reference": "Psalm 139:14",
+      "verse": "I praise You, for I am fearfully and wonderfully made. Marvelous are Your works, and I know this very well.",
+      "reflectionQuestion": "What part of God's workmanship in you is hardest to receive with gratitude?",
+      "journalPrompt": "Write a prayer of thanks for the way God made you."
+    },
+    {
+      "id": "rom8-1",
+      "category": "Shame",
+      "statement": "There is now no condemnation for you.",
+      "personalized": {
+        "masculine": "There is now no condemnation for {name}.",
+        "feminine": "There is now no condemnation for {name}."
+      },
+      "reference": "Romans 8:1",
+      "verse": "Therefore, there is now no condemnation for those who are in Christ Jesus.",
+      "reflectionQuestion": "What accusation needs to meet the mercy of Christ today?",
+      "journalPrompt": "Write about what it would mean to live today without condemnation."
+    },
+    {
+      "id": "1pet2-9",
+      "category": "Rejection",
+      "statement": "You are chosen, a people for God's own possession.",
+      "personalized": {
+        "masculine": "{name} is chosen, a person for God's own possession.",
+        "feminine": "{name} is chosen, a person for God's own possession."
+      },
+      "reference": "1 Peter 2:9",
+      "verse": "But you are a chosen people, a royal priesthood, a holy nation, a people for God’s own possession, to proclaim the virtues of Him who called you out of darkness into His marvelous light.",
+      "reflectionQuestion": "Where are you looking for belonging that God has already given you?",
+      "journalPrompt": "Write about what it means to be wanted and chosen by God."
+    },
+    {
+      "id": "deut31-6",
+      "category": "Loneliness",
+      "statement": "God goes with you and will never leave you.",
+      "personalized": {
+        "masculine": "God goes with {name} and will never leave him.",
+        "feminine": "God goes with {name} and will never leave her."
+      },
+      "reference": "Deuteronomy 31:6",
+      "verse": "Be strong and courageous; do not be afraid or terrified of them, for it is the LORD your God who goes with you; He will never leave you nor forsake you.”",
+      "reflectionQuestion": "How would this moment feel different if you practiced God's nearness?",
+      "journalPrompt": "Write about where you need to remember that God is with you."
+    },
+    {
+      "id": "2tim1-7",
+      "category": "Fear",
+      "statement": "You were not given a spirit of fear.",
+      "personalized": {
+        "masculine": "{name} was not given a spirit of fear.",
+        "feminine": "{name} was not given a spirit of fear."
+      },
+      "reference": "2 Timothy 1:7",
+      "verse": "For God has not given us a spirit of fear, but of power, love, and self-control.",
+      "reflectionQuestion": "What fear could you bring honestly before God today?",
+      "journalPrompt": "Write a prayer asking God to replace fear with power, love, and self-control."
+    },
+    {
+      "id": "phil4-6",
+      "category": "Anxiety",
+      "statement": "You can bring everything to God in prayer.",
+      "personalized": {
+        "masculine": "{name} can bring everything to God in prayer.",
+        "feminine": "{name} can bring everything to God in prayer."
+      },
+      "reference": "Philippians 4:6",
+      "verse": "Be anxious for nothing, but in everything, by prayer and petition, with thanksgiving, present your requests to God.",
+      "reflectionQuestion": "What request have you been carrying that you can entrust to God?",
+      "journalPrompt": "Name what is making you anxious, then turn it into prayer."
+    },
+    {
+      "id": "jer29-11",
+      "category": "Purpose",
+      "statement": "God has plans to give you hope and a future.",
+      "personalized": {
+        "masculine": "God has plans to give {name} hope and a future.",
+        "feminine": "God has plans to give {name} hope and a future."
+      },
+      "reference": "Jeremiah 29:11",
+      "verse": "For I know the plans I have for you, declares the LORD, plans to prosper you and not to harm you, to give you a future and a hope.",
+      "reflectionQuestion": "Where do you need to trust God's hope more than your forecast?",
+      "journalPrompt": "Write about one place where you need hope for the future."
+    },
+    {
+      "id": "rom8-37",
+      "category": "Failure",
+      "statement": "You are more than a conqueror through Him.",
+      "personalized": {
+        "masculine": "{name} is more than a conqueror through Him.",
+        "feminine": "{name} is more than a conqueror through Him."
+      },
+      "reference": "Romans 8:37",
+      "verse": "No, in all these things we are more than conquerors through Him who loved us.",
+      "reflectionQuestion": "What defeat are you interpreting apart from the love of Christ?",
+      "journalPrompt": "Write about what courage looks like when you are held by God's love."
+    },
+    {
+      "id": "identity-1",
+      "category": "Identity",
+      "statement": "You are God's child, born again of the incorruptible seed of the Word of God that lives and abides forever.",
+      "personalized": {
+        "masculine": "{name} is God's child, born again of the incorruptible seed of the Word of God that lives and abides forever.",
+        "feminine": "{name} is God's child, born again of the incorruptible seed of the Word of God that lives and abides forever."
+      },
+      "reference": "1 Peter 1:23",
+      "verse": "For you have been born again, not of perishable seed, but of imperishable, through the living and enduring word of God.",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-2",
+      "category": "Identity",
+      "statement": "You are forgiven of all your sins and washed in the blood.",
+      "personalized": {
+        "masculine": "{name} is forgiven of all his sins and washed in the blood.",
+        "feminine": "{name} is forgiven of all her sins and washed in the blood."
+      },
+      "reference": "Ephesians 1:7, Hebrews 9:14, Colossians 1:14, 1 John 2:12, 1 John 1:9",
+      "verse": "In Him we have redemption through His blood, the forgiveness of our trespasses, according to the riches of His grace how much more will the blood of Christ, who through the eternal Spirit offered Himself unblemished to God, purify our consciences from works of death, so that we may serve the living God! in whom we have redemption, the forgiveness of sins. I am writing to you, little children, because your sins have been forgiven through His name. If we confess our sins, He is faithful and just to forgive us our sins and to cleanse us from all unrighteousness.",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-3",
+      "category": "Identity",
+      "statement": "You are a new creation.",
+      "personalized": {
+        "masculine": "{name} is a new creation.",
+        "feminine": "{name} is a new creation."
+      },
+      "reference": "2 Corinthians 5:17",
+      "verse": "Therefore if anyone is in Christ, he is a new creation. The old has passed away. Behold, the new has come!",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-4",
+      "category": "Identity",
+      "statement": "You are a temple where the Holy Spirit lives.",
+      "personalized": {
+        "masculine": "{name} is a temple where the Holy Spirit lives.",
+        "feminine": "{name} is a temple where the Holy Spirit lives."
+      },
+      "reference": "1 Corinthians 6:19",
+      "verse": "Do you not know that your body is a temple of the Holy Spirit who is in you, whom you have received from God? You are not your own;",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-5",
+      "category": "Identity",
+      "statement": "You are delivered from the power of darkness; Christ brings you into God's kingdom.",
+      "personalized": {
+        "masculine": "{name} is delivered from the power of darkness; Christ brings him into God's kingdom.",
+        "feminine": "{name} is delivered from the power of darkness; Christ brings her into God's kingdom."
+      },
+      "reference": "Colossians 1:13",
+      "verse": "He has rescued us from the dominion of darkness and brought us into the kingdom of His beloved Son,",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-6",
+      "category": "Identity",
+      "statement": "You are redeemed from the curse of the law.",
+      "personalized": {
+        "masculine": "{name} is redeemed from the curse of the law.",
+        "feminine": "{name} is redeemed from the curse of the law."
+      },
+      "reference": "1 Peter 1:18-19",
+      "verse": "For you know that it was not with perishable things such as silver or gold that you were redeemed from the empty way of life you inherited from your forefathers, but with the precious blood of Christ, a lamb without blemish or spot.",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-7",
+      "category": "Identity",
+      "statement": "You are holy and without blame before God.",
+      "personalized": {
+        "masculine": "{name} is holy and without blame before God.",
+        "feminine": "{name} is holy and without blame before God."
+      },
+      "reference": "Ephesians 1:4",
+      "verse": "For He chose us in Him before the foundation of the world to be holy and blameless in His presence. In love",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-8",
+      "category": "Identity",
+      "statement": "You are established to the end.",
+      "personalized": {
+        "masculine": "{name} is established to the end.",
+        "feminine": "{name} is established to the end."
+      },
+      "reference": "1 Corinthians 1:8",
+      "verse": "He will sustain you to the end, so that you will be blameless on the day of our Lord Jesus Christ.",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-9",
+      "category": "Identity",
+      "statement": "You have been brought near to God through the blood of Christ.",
+      "personalized": {
+        "masculine": "{name} has been brought near to God through the blood of Christ.",
+        "feminine": "{name} has been brought near to God through the blood of Christ."
+      },
+      "reference": "Ephesians 2:13",
+      "verse": "But now in Christ Jesus you who once were far away have been brought near through the blood of Christ.",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-10",
+      "category": "Identity",
+      "statement": "You are victorious.",
+      "personalized": {
+        "masculine": "{name} is victorious.",
+        "feminine": "{name} is victorious."
+      },
+      "reference": "Revelation 21:7",
+      "verse": "The one who overcomes will inherit all things, and I will be his God, and he will be My son.",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-11",
+      "category": "Identity",
+      "statement": "You are set free.",
+      "personalized": {
+        "masculine": "{name} is set free.",
+        "feminine": "{name} is set free."
+      },
+      "reference": "John 8:31-32",
+      "verse": "So He said to the Jews who had believed Him, “If you continue in My word, you are truly My disciples. Then you will know the truth, and the truth will set you free.”",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-12",
+      "category": "Identity",
+      "statement": "You are strong in the Lord.",
+      "personalized": {
+        "masculine": "{name} is strong in the Lord.",
+        "feminine": "{name} is strong in the Lord."
+      },
+      "reference": "Ephesians 6:10",
+      "verse": "Finally, be strong in the Lord and in His mighty power.",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-13",
+      "category": "Identity",
+      "statement": "You are dead to sin.",
+      "personalized": {
+        "masculine": "{name} is dead to sin.",
+        "feminine": "{name} is dead to sin."
+      },
+      "reference": "Romans 6:2 & 11, 1 Peter 2:24",
+      "verse": "Certainly not! How can we who died to sin live in it any longer? So you too must count yourselves dead to sin, but alive to God in Christ Jesus. He Himself bore our sins in His body on the tree, so that we might die to sin and live to righteousness. “By His stripes you are healed.”",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-14",
+      "category": "Identity",
+      "statement": "You are more than a conqueror.",
+      "personalized": {
+        "masculine": "{name} is more than a conqueror.",
+        "feminine": "{name} is more than a conqueror."
+      },
+      "reference": "Romans 8:37",
+      "verse": "No, in all these things we are more than conquerors through Him who loved us.",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-15",
+      "category": "Identity",
+      "statement": "You are a co-heir with Christ.",
+      "personalized": {
+        "masculine": "{name} is a co-heir with Christ.",
+        "feminine": "{name} is a co-heir with Christ."
+      },
+      "reference": "Romans 8:16-17",
+      "verse": "The Spirit Himself testifies with our spirit that we are God’s children. And if we are children, then we are heirs: heirs of God and co-heirs with Christ—if indeed we suffer with Him, so that we may also be glorified with Him.",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-16",
+      "category": "Identity",
+      "statement": "You are sealed with the Holy Spirit of promise.",
+      "personalized": {
+        "masculine": "{name} is sealed with the Holy Spirit of promise.",
+        "feminine": "{name} is sealed with the Holy Spirit of promise."
+      },
+      "reference": "Ephesians 1:13",
+      "verse": "And in Him, having heard and believed the word of truth—the gospel of your salvation—you were sealed with the promised Holy Spirit,",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-17",
+      "category": "Identity",
+      "statement": "You are in Christ Jesus by His doing.",
+      "personalized": {
+        "masculine": "{name} is in Christ Jesus by His doing.",
+        "feminine": "{name} is in Christ Jesus by His doing."
+      },
+      "reference": "1 Corinthians 1:30",
+      "verse": "It is because of Him that you are in Christ Jesus, who has become for us wisdom from God: our righteousness, holiness, and redemption.",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-18",
+      "category": "Identity",
+      "statement": "You are accepted in Jesus Christ.",
+      "personalized": {
+        "masculine": "{name} is accepted in Jesus Christ.",
+        "feminine": "{name} is accepted in Jesus Christ."
+      },
+      "reference": "Ephesians 1:5-6",
+      "verse": "He predestined us for adoption as His sons through Jesus Christ, according to the good pleasure of His will, to the praise of His glorious grace, which He has freely given us in the Beloved One.",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-19",
+      "category": "Identity",
+      "statement": "You are complete in Him.",
+      "personalized": {
+        "masculine": "{name} is complete in Him.",
+        "feminine": "{name} is complete in Him."
+      },
+      "reference": "Colossians 2:10",
+      "verse": "And you have been made complete in Christ, who is the head over every ruler and authority.",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-20",
+      "category": "Identity",
+      "statement": "You are crucified with Christ.",
+      "personalized": {
+        "masculine": "{name} is crucified with Christ.",
+        "feminine": "{name} is crucified with Christ."
+      },
+      "reference": "Galatians 2:20",
+      "verse": "I have been crucified with Christ, and I no longer live, but Christ lives in me. The life I live in the body, I live by faith in the Son of God, who loved me and gave Himself up for me.",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-21",
+      "category": "Identity",
+      "statement": "You are alive with Christ.",
+      "personalized": {
+        "masculine": "{name} is alive with Christ.",
+        "feminine": "{name} is alive with Christ."
+      },
+      "reference": "Ephesians 2:4-5",
+      "verse": "But because of His great love for us, God, who is rich in mercy, made us alive with Christ even when we were dead in our trespasses. It is by grace you have been saved!",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-22",
+      "category": "Identity",
+      "statement": "You are free from condemnation.",
+      "personalized": {
+        "masculine": "{name} is free from condemnation.",
+        "feminine": "{name} is free from condemnation."
+      },
+      "reference": "Romans 8:1",
+      "verse": "Therefore, there is now no condemnation for those who are in Christ Jesus.",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-23",
+      "category": "Identity",
+      "statement": "You are reconciled to God.",
+      "personalized": {
+        "masculine": "{name} is reconciled to God.",
+        "feminine": "{name} is reconciled to God."
+      },
+      "reference": "2 Corinthians 5:18",
+      "verse": "All this is from God, who reconciled us to Himself through Christ and gave us the ministry of reconciliation:",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-24",
+      "category": "Identity",
+      "statement": "You are qualified to share in His inheritance.",
+      "personalized": {
+        "masculine": "{name} is qualified to share in His inheritance.",
+        "feminine": "{name} is qualified to share in His inheritance."
+      },
+      "reference": "Colossians 1:12",
+      "verse": "giving thanks to the Father, who has qualified you to share in the inheritance of the saints in the light.",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-25",
+      "category": "Identity",
+      "statement": "You are firmly rooted, established in your faith, and overflowing with gratefulness and thankfulness.",
+      "personalized": {
+        "masculine": "{name} is firmly rooted, established in his faith, and overflowing with gratefulness and thankfulness.",
+        "feminine": "{name} is firmly rooted, established in her faith, and overflowing with gratefulness and thankfulness."
+      },
+      "reference": "Colossians 2:7",
+      "verse": "rooted and built up in Him, established in the faith as you were taught, and overflowing with thankfulness.",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-26",
+      "category": "Identity",
+      "statement": "You are called by God.",
+      "personalized": {
+        "masculine": "{name} is called by God.",
+        "feminine": "{name} is called by God."
+      },
+      "reference": "2 Timothy 1:9",
+      "verse": "He has saved us and called us to a holy calling, not because of our works, but by His own purpose and by the grace He granted us in Christ Jesus before time began.",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-27",
+      "category": "Identity",
+      "statement": "You are chosen.",
+      "personalized": {
+        "masculine": "{name} is chosen.",
+        "feminine": "{name} is chosen."
+      },
+      "reference": "1 Thessalonians 1:4, Ephesians 1:4, 1 Peter 2:9",
+      "verse": "Brothers who are beloved by God, we know that He has chosen you, For He chose us in Him before the foundation of the world to be holy and blameless in His presence. In love But you are a chosen people, a royal priesthood, a holy nation, a people for God’s own possession, to proclaim the virtues of Him who called you out of darkness into His marvelous light.",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-28",
+      "category": "Identity",
+      "statement": "You are an ambassador of Christ.",
+      "personalized": {
+        "masculine": "{name} is an ambassador of Christ.",
+        "feminine": "{name} is an ambassador of Christ."
+      },
+      "reference": "2 Corinthians 5:20",
+      "verse": "Therefore we are ambassadors for Christ, as though God were making His appeal through us. We implore you on behalf of Christ: Be reconciled to God.",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-29",
+      "category": "Identity",
+      "statement": "You are God's workmanship created in Christ Jesus for good works.",
+      "personalized": {
+        "masculine": "{name} is God's workmanship created in Christ Jesus for good works.",
+        "feminine": "{name} is God's workmanship created in Christ Jesus for good works."
+      },
+      "reference": "Ephesians 2:10",
+      "verse": "For we are God’s workmanship, created in Christ Jesus to do good works, which God prepared in advance as our way of life.",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-30",
+      "category": "Identity",
+      "statement": "You are the apple of God's eye.",
+      "personalized": {
+        "masculine": "{name} is the apple of God's eye.",
+        "feminine": "{name} is the apple of God's eye."
+      },
+      "reference": "Deuteronomy 32:10, Psalm 17:8",
+      "verse": "He found him in a desert land, in a barren, howling wilderness; He surrounded him, He instructed him, He guarded him as the apple of His eye. Keep me as the apple of Your eye; hide me in the shadow of Your wings",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-31",
+      "category": "Identity",
+      "statement": "You are healed by the stripes of Jesus.",
+      "personalized": {
+        "masculine": "{name} is healed by the stripes of Jesus.",
+        "feminine": "{name} is healed by the stripes of Jesus."
+      },
+      "reference": "1 Peter 2:24, Isaiah 53:6",
+      "verse": "He Himself bore our sins in His body on the tree, so that we might die to sin and live to righteousness. “By His stripes you are healed.” We all like sheep have gone astray, each one has turned to his own way; and the LORD has laid upon Him the iniquity of us all.",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-32",
+      "category": "Identity",
+      "statement": "You are being changed into His image.",
+      "personalized": {
+        "masculine": "{name} is being changed into His image.",
+        "feminine": "{name} is being changed into His image."
+      },
+      "reference": "2 Corinthians 3:18, Philippians 1:6",
+      "verse": "And we, who with unveiled faces all reflect the glory of the Lord, are being transformed into His image with intensifying glory, which comes from the Lord, who is the Spirit. being confident of this, that He who began a good work in you will carry it on to completion until the day of Christ Jesus.",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-33",
+      "category": "Identity",
+      "statement": "You are raised up with Christ and seated in heavenly places.",
+      "personalized": {
+        "masculine": "{name} is raised up with Christ and is seated in heavenly places.",
+        "feminine": "{name} is raised up with Christ and is seated in heavenly places."
+      },
+      "reference": "Ephesians 2:6",
+      "verse": "And God raised us up with Christ and seated us with Him in the heavenly realms in Christ Jesus,",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-34",
+      "category": "Identity",
+      "statement": "You are beloved of God.",
+      "personalized": {
+        "masculine": "{name} is beloved of God.",
+        "feminine": "{name} is beloved of God."
+      },
+      "reference": "Colossians 3:12, Romans 1:7, 1 Thessalonians 1:4",
+      "verse": "Therefore, as the elect of God, holy and beloved, clothe yourselves with hearts of compassion, kindness, humility, gentleness, and patience. To all in Rome who are loved by God and called to be saints: Grace and peace to you from God our Father and the Lord Jesus Christ. Brothers who are beloved by God, we know that He has chosen you,",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-35",
+      "category": "Identity",
+      "statement": "You have the mind of Christ.",
+      "personalized": {
+        "masculine": "{name} has the mind of Christ.",
+        "feminine": "{name} has the mind of Christ."
+      },
+      "reference": "Philippians 2:5, 1 Corinthians 2:16",
+      "verse": "Let this mind be in you which was also in Christ Jesus: “For who has known the mind of the Lord, so as to instruct Him?” But we have the mind of Christ.",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-36",
+      "category": "Identity",
+      "statement": "You have obtained an inheritance.",
+      "personalized": {
+        "masculine": "{name} has obtained an inheritance.",
+        "feminine": "{name} has obtained an inheritance."
+      },
+      "reference": "Ephesians 1:11",
+      "verse": "In Him we were also chosen as God’s own, having been predestined according to the plan of Him who works out everything by the counsel of His will,",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-37",
+      "category": "Identity",
+      "statement": "You have access by one Spirit to the Father.",
+      "personalized": {
+        "masculine": "{name} has access by one Spirit to the Father.",
+        "feminine": "{name} has access by one Spirit to the Father."
+      },
+      "reference": "Ephesians 2:18",
+      "verse": "For through Him we both have access to the Father by one Spirit.",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-38",
+      "category": "Identity",
+      "statement": "You have overcome the world.",
+      "personalized": {
+        "masculine": "{name} has overcome the world.",
+        "feminine": "{name} has overcome the world."
+      },
+      "reference": "1 John 5:4",
+      "verse": "because everyone born of God overcomes the world. And this is the victory that has overcome the world: our faith.",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-39",
+      "category": "Identity",
+      "statement": "You have everlasting life and will not be condemned.",
+      "personalized": {
+        "masculine": "{name} has everlasting life and will not be condemned.",
+        "feminine": "{name} has everlasting life and will not be condemned."
+      },
+      "reference": "John 5:24, John 6:47",
+      "verse": "Truly, truly, I tell you, whoever hears My word and believes Him who sent Me has eternal life and will not come under judgment. Indeed, he has crossed over from death to life. Truly, truly, I tell you, he who believes has eternal life.",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-40",
+      "category": "Identity",
+      "statement": "You have the peace of God that transcends all understanding.",
+      "personalized": {
+        "masculine": "{name} has the peace of God that transcends all understanding.",
+        "feminine": "{name} has the peace of God that transcends all understanding."
+      },
+      "reference": "Philippians 4:7",
+      "verse": "And the peace of God, which surpasses all understanding, will guard your hearts and your minds in Christ Jesus.",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-41",
+      "category": "Identity",
+      "statement": "You have received the power of the Holy Spirit: power to lay hands on the sick and see them recover; power to cast out demons; power over all the power of the enemy; nothing shall by any means hurt you.",
+      "personalized": {
+        "masculine": "{name} has received the power of the Holy Spirit: power to lay hands on the sick and see them recover; power to cast out demons; power over all the power of the enemy; nothing shall by any means hurt {name}.",
+        "feminine": "{name} has received the power of the Holy Spirit: power to lay hands on the sick and see them recover; power to cast out demons; power over all the power of the enemy; nothing shall by any means hurt {name}."
+      },
+      "reference": "Mark 16:17-18, Luke 10:17-19",
+      "verse": "And these signs will accompany those who believe: In My name they will drive out demons; they will speak in new tongues; they will pick up snakes with their hands, and if they drink any deadly poison, it will not harm them; they will lay their hands on the sick, and they will be made well.” The seventy-two returned with joy and said, “Lord, even the demons submit to us in Your name.” So He told them, “I saw Satan fall like lightning from heaven. Behold, I have given you authority to tread on snakes and scorpions, and over all the power of the enemy. Nothing will harm you.",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-42",
+      "category": "Identity",
+      "statement": "You live by the law of the Spirit of life in Christ Jesus.",
+      "personalized": {
+        "masculine": "{name} lives by the law of the Spirit of life in Christ Jesus.",
+        "feminine": "{name} lives by the law of the Spirit of life in Christ Jesus."
+      },
+      "reference": "Romans 8:2",
+      "verse": "For in Christ Jesus the law of the Spirit of life set you free from the law of sin and death.",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-43",
+      "category": "Identity",
+      "statement": "You walk in Christ Jesus.",
+      "personalized": {
+        "masculine": "{name} walks in Christ Jesus.",
+        "feminine": "{name} walks in Christ Jesus."
+      },
+      "reference": "Colossians 2:6",
+      "verse": "Therefore, just as you have received Christ Jesus as Lord, continue to walk in Him,",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-44",
+      "category": "Identity",
+      "statement": "You can do all things in and through Christ Jesus.",
+      "personalized": {
+        "masculine": "{name} can do all things in and through Christ Jesus.",
+        "feminine": "{name} can do all things in and through Christ Jesus."
+      },
+      "reference": "Philippians 4:13",
+      "verse": "I can do all things through Christ who gives me strength.",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-45",
+      "category": "Identity",
+      "statement": "You shall do even greater things than Jesus did.",
+      "personalized": {
+        "masculine": "{name} shall do even greater things than Jesus did.",
+        "feminine": "{name} shall do even greater things than Jesus did."
+      },
+      "reference": "John 14:12",
+      "verse": "Truly, truly, I tell you, whoever believes in Me will also do the works that I am doing. He will do even greater things than these, because I am going to the Father.",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-46",
+      "category": "Identity",
+      "statement": "You possess the Great One in you because greater is He who is in you than he who is in the world.",
+      "personalized": {
+        "masculine": "{name} possesses the Great One in himself because greater is He who is in {name} than he who is in the world.",
+        "feminine": "{name} possesses the Great One in herself because greater is He who is in {name} than he who is in the world."
+      },
+      "reference": "1 John 4:4",
+      "verse": "You, little children, are from God and have overcome them, because greater is He who is in you than he who is in the world.",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-47",
+      "category": "Identity",
+      "statement": "You press toward the mark for the prize of the high calling of God.",
+      "personalized": {
+        "masculine": "{name} presses toward the mark for the prize of the high calling of God.",
+        "feminine": "{name} presses toward the mark for the prize of the high calling of God."
+      },
+      "reference": "Philippians 3:14",
+      "verse": "I press on toward the goal to win the prize of God’s heavenly calling in Christ Jesus.",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-48",
+      "category": "Identity",
+      "statement": "You always triumph in Christ.",
+      "personalized": {
+        "masculine": "{name} always triumphs in Christ.",
+        "feminine": "{name} always triumphs in Christ."
+      },
+      "reference": "2 Corinthians 2:14",
+      "verse": "But thanks be to God, who always leads us triumphantly as captives in Christ and through us spreads everywhere the fragrance of the knowledge of Him.",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-49",
+      "category": "Identity",
+      "statement": "Your life shows forth His praise.",
+      "personalized": {
+        "masculine": "{name}'s life shows forth His praise.",
+        "feminine": "{name}'s life shows forth His praise."
+      },
+      "reference": "1 Peter 2:9",
+      "verse": "But you are a chosen people, a royal priesthood, a holy nation, a people for God’s own possession, to proclaim the virtues of Him who called you out of darkness into His marvelous light.",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    },
+    {
+      "id": "identity-50",
+      "category": "Identity",
+      "statement": "Your life is hidden with Christ in God.",
+      "personalized": {
+        "masculine": "{name}'s life is hidden with Christ in God.",
+        "feminine": "{name}'s life is hidden with Christ in God."
+      },
+      "reference": "Colossians 3:3",
+      "verse": "For you died, and your life is now hidden with Christ in God.",
+      "reflectionQuestion": "What would change if you received this as God's word over you today?",
+      "journalPrompt": "Write a few lines about what this truth speaks into your life today."
+    }
+  ],
+  "struggles": [
+    {
+      "id": "rejected",
+      "label": "I feel rejected",
+      "category": "Rejection",
+      "lie": "Nobody truly wants me.",
+      "truth": "In Christ you are chosen, accepted, and dearly loved.",
+      "verses": [
+        {
+          "reference": "Ephesians 1:4-6",
+          "verse": "For He chose us in Him before the foundation of the world to be holy and blameless in His presence. In love He predestined us for adoption as His sons through Jesus Christ, according to the good pleasure of His will, to the praise of His glorious grace, which He has freely given us in the Beloved One."
+        },
+        {
+          "reference": "1 Peter 2:9",
+          "verse": "But you are a chosen people, a royal priesthood, a holy nation, a people for God’s own possession, to proclaim the virtues of Him who called you out of darkness into His marvelous light."
+        }
+      ],
+      "reflection": "Whose acceptance have you been waiting for that God has already freely given you?",
+      "prayer": "Father, thank You that You chose me before the foundation of the world. Quiet the voice of rejection, and let me rest in being wanted by You. Amen."
+    },
+    {
+      "id": "alone",
+      "label": "I feel alone",
+      "category": "Loneliness",
+      "lie": "I am on my own.",
+      "truth": "God is with you always and will never leave you.",
+      "verses": [
+        {
+          "reference": "Deuteronomy 31:6",
+          "verse": "Be strong and courageous; do not be afraid or terrified of them, for it is the LORD your God who goes with you; He will never leave you nor forsake you.”"
+        },
+        {
+          "reference": "Hebrews 13:5",
+          "verse": "Keep your lives free from the love of money and be content with what you have, for God has said: “Never will I leave you, never will I forsake you.”"
+        }
+      ],
+      "reflection": "How might today feel different if you walked through it aware that you are never truly alone?",
+      "prayer": "Lord, when loneliness presses in, remind me that You are nearer than my own breath. Thank You that You will never leave me. Amen."
+    },
+    {
+      "id": "afraid",
+      "label": "I am afraid",
+      "category": "Fear",
+      "lie": "I am not safe.",
+      "truth": "God gives you not fear, but power, love, and a sound mind.",
+      "verses": [
+        {
+          "reference": "2 Timothy 1:7",
+          "verse": "For God has not given us a spirit of fear, but of power, love, and self-control."
+        },
+        {
+          "reference": "Isaiah 41:10",
+          "verse": "Do not fear, for I am with you; do not be afraid, for I am your God. I will strengthen you; I will surely help you; I will uphold you with My righteous right hand."
+        }
+      ],
+      "reflection": "What fear could you hand to God right now, trusting Him to hold what you cannot?",
+      "prayer": "Father, You are my refuge. Where fear has taken root, plant Your peace. Help me trust that You are holding me. Amen."
+    },
+    {
+      "id": "anxious",
+      "label": "I feel anxious",
+      "category": "Anxiety",
+      "lie": "I have to carry this by myself.",
+      "truth": "God invites you to bring every anxious thought to Him and receive His peace.",
+      "verses": [
+        {
+          "reference": "Philippians 4:6-7",
+          "verse": "Be anxious for nothing, but in everything, by prayer and petition, with thanksgiving, present your requests to God. And the peace of God, which surpasses all understanding, will guard your hearts and your minds in Christ Jesus."
+        },
+        {
+          "reference": "1 Peter 5:7",
+          "verse": "Cast all your anxiety on Him, because He cares for you."
+        }
+      ],
+      "reflection": "What anxious thought could you name honestly before God instead of carrying it alone?",
+      "prayer": "Father, I bring You what is racing through my mind. Teach me to cast my anxiety on You, and let Your peace guard my heart in Christ. Amen."
+    },
+    {
+      "id": "failure",
+      "label": "I feel like a failure",
+      "category": "Failure",
+      "lie": "I am not enough.",
+      "truth": "God has equipped you for every good work He prepared for you.",
+      "verses": [
+        {
+          "reference": "Philippians 1:6",
+          "verse": "being confident of this, that He who began a good work in you will carry it on to completion until the day of Christ Jesus."
+        },
+        {
+          "reference": "Ephesians 2:10",
+          "verse": "For we are God’s workmanship, created in Christ Jesus to do good works, which God prepared in advance as our way of life."
+        }
+      ],
+      "reflection": "What if your worth was never meant to rest on your performance, but on His love?",
+      "prayer": "Lord, I lay down the weight of measuring up. Thank You that You are not finished with me, and that Your love does not depend on my success. Amen."
+    },
+    {
+      "id": "ashamed",
+      "label": "I am ashamed",
+      "category": "Shame",
+      "lie": "I am beyond redemption.",
+      "truth": "In Christ there is no condemnation; your shame is covered.",
+      "verses": [
+        {
+          "reference": "Romans 8:1",
+          "verse": "Therefore, there is now no condemnation for those who are in Christ Jesus."
+        },
+        {
+          "reference": "Psalm 34:5",
+          "verse": "Those who look to Him are radiant with joy; their faces shall never be ashamed."
+        }
+      ],
+      "reflection": "What would it look like to receive the forgiveness God is already offering you?",
+      "prayer": "Father, I bring my shame into Your light. Thank You that in Christ I am not condemned but covered. Lift my face toward You. Amen."
+    },
+    {
+      "id": "inadequate",
+      "label": "I feel inadequate",
+      "category": "Failure",
+      "lie": "I don't measure up.",
+      "truth": "His grace is enough; His power is made perfect in weakness.",
+      "verses": [
+        {
+          "reference": "2 Corinthians 12:9",
+          "verse": "But He said to me, “My grace is sufficient for you, for My power is perfected in weakness.” Therefore I will boast all the more gladly in my weaknesses, so that the power of Christ may rest on me."
+        }
+      ],
+      "reflection": "Where might God want to meet you in your weakness rather than your strength?",
+      "prayer": "Lord, where I feel small and unqualified, be my sufficiency. Let Your strength be perfected in my weakness. Amen."
+    },
+    {
+      "id": "purpose",
+      "label": "I don't know my purpose.",
+      "category": "Purpose",
+      "lie": "My life has no meaning.",
+      "truth": "You were created on purpose for good works God prepared in advance.",
+      "verses": [
+        {
+          "reference": "Jeremiah 29:11",
+          "verse": "For I know the plans I have for you, declares the LORD, plans to prosper you and not to harm you, to give you a future and a hope."
+        },
+        {
+          "reference": "Ephesians 2:10",
+          "verse": "For we are God’s workmanship, created in Christ Jesus to do good works, which God prepared in advance as our way of life."
+        }
+      ],
+      "reflection": "What small, faithful step could you take today, trusting God to direct your path?",
+      "prayer": "Father, when my path feels unclear, remind me that You created me with intention. Lead me into the good works You have prepared. Amen."
+    }
+  ]
+}
