@@ -17,7 +17,7 @@ export function BibleReferenceLink({
             key={`${part.text}-${index}`}
             href={part.href}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className={className}
           >
             {part.text}
