@@ -1,72 +1,49 @@
-import ContactForm from "@/app/contactform";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+import ContactForm from "@/app/contactform";
 import Footer from "@/app/footer";
+
+export const metadata: Metadata = {
+  title: "About — What God Says About Me",
+  description: "Why this app exists and how to get in touch.",
+};
 
 export default function Page() {
   return (
-    <div className="flex flex-col w-screen min-h-screen m-0 p-0 justify-between">
-      <section className="flex flex-col flex-grow w-screen m-0 p-0 overflow-hidden bg-white lg:flex-row sm:mx-auto min-h-screen">
-        <div className="flex justify-end p-8 bg-white lg:pb-32 lg:pt-6 lg:px-16 lg:pl-10 lg:w-1/2">
-          <div className="flex flex-col items-start justify-center w-full lg:max-w-lg">
-            <Link
-              href="/"
-              className="touch-pan-y inline-block px-2 py-1 mb-5 font-medium tracking-wider text-gray-700 uppercase text-xxs hover:bg-slate-200 rounded-full"
-            >
-              <svg
-                className="inline-block mr-2 pb-1"
-                fill="#000000"
-                height="24px"
-                width="24px"
-                version="1.1"
-                id="Layer_1"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlnsXlink="http://www.w3.org/1999/xlink"
-                viewBox="0 0 476.213 476.213"
-                xmlSpace="preserve"
-              >
-                <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                <g
-                  id="SVGRepo_tracerCarrier"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                ></g>
-                <g id="SVGRepo_iconCarrier">
-                  {" "}
-                  <polygon points="476.213,223.107 57.427,223.107 151.82,128.713 130.607,107.5 0,238.106 130.607,368.714 151.82,347.5 57.427,253.107 476.213,253.107 "></polygon>{" "}
-                </g>
-              </svg>
-              Back
-            </Link>
+    <div className="min-h-[100dvh] bg-page">
+      <div className="mx-auto w-full max-w-[480px] px-6 pb-16 pt-10">
+        <Link
+          href="/"
+          className="inline-flex min-h-[44px] items-center text-[13px] font-extrabold uppercase tracking-[1.2px] text-accentDeep focus-ring"
+        >
+          ← Back
+        </Link>
 
-            <h5 className="mb-3 text-3xl font-extrabold leading-none sm:text-4xl lg:text-7xl">
-              About
-            </h5>
-            <p className="pt-5 mb-5 text-gray-600 lg:text-xl w-full">
-              We&apos;re so glad you found your way here. This simple app exists
-              for one reason: to remind you of who you really are.
-            </p>
-            <p className="mb-5 text-gray-600 lg:text-xl w-full">
-              Following Jesus was never a promise that life would be easy — but
-              it is an invitation into something far better. He welcomes you as a
-              beloved son or daughter of the God who made the universe, and made
-              you.
-            </p>
-            <p className="mb-5 text-gray-600 lg:text-xl w-full">
-              You are seen. You are cared for. You are deeply loved. And the One
-              who created you longs to know you.
-            </p>
-            <Link
-              href="/privacy"
-              className="touch-pan-y text-gray-600 underline decoration-slate-400 decoration-2 underline-offset-2 hover:decoration-slate-600"
-            >
-              Privacy Policy
-            </Link>
-          </div>
+        <h1 className="mt-2 font-serif text-[44px] leading-[52px] text-scriptureInk">
+          About
+        </h1>
+
+        <div className="mt-4 flex flex-col gap-4 text-[17px] leading-[25px] text-softInk">
+          <p>
+            We&apos;re so glad you found your way here. This simple app exists for
+            one reason: to remind you of who you really are.
+          </p>
+          <p>
+            Following Jesus was never a promise that life would be easy — but it
+            is an invitation into something far better. He welcomes you as a
+            beloved son or daughter of the God who made the universe, and made
+            you.
+          </p>
+          <p>
+            You are seen. You are cared for. You are deeply loved. And the One who
+            created you longs to know you.
+          </p>
         </div>
-        <div className="flex flex-col items-start justify-center w-full lg:w-1/2 lg:max-w-2xl">
-          <ContactForm />
-        </div>
-      </section>
+
+        <h2 className="mt-6 font-serif text-2xl text-ink">Contact Us</h2>
+        <ContactForm />
+      </div>
       <Footer />
     </div>
   );
