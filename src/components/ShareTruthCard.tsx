@@ -32,7 +32,7 @@ export function ShareTruthCard({
           type="button"
           onClick={onClose}
           aria-label="Close share card"
-          className="ml-auto flex min-h-[44px] items-center text-sm font-bold text-softInk focus-ring"
+          className="ml-auto flex w-fit min-h-[44px] items-center text-sm font-bold text-softInk focus-ring"
         >
           Close
         </button>
