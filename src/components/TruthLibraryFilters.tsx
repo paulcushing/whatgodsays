@@ -13,6 +13,12 @@ const truthOptions: { label: string; category: TruthCategory | null }[] = [
   { label: "All identity truths", category: null },
   { label: "Purpose", category: "Purpose" },
   { label: "Identity", category: "Identity" },
+  { label: "Fear", category: "Fear" },
+  { label: "Anxiety", category: "Anxiety" },
+  { label: "Rejection", category: "Rejection" },
+  { label: "Shame", category: "Shame" },
+  { label: "Failure", category: "Failure" },
+  { label: "Loneliness", category: "Loneliness" },
 ];
 
 const lieOptions: { label: string; category: TruthCategory | null }[] = [

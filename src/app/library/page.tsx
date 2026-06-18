@@ -17,7 +17,7 @@ import { getShareableTruthById, truthFromStruggle } from "@/data/content";
 import type { Truth } from "@/data/verseUtils";
 import { useCustomLibrary } from "@/hooks/useCustomLibrary";
 import { useFavorites } from "@/hooks/useFavorites";
-import { useShareTruth } from "@/hooks/useShareTruth";
+import { truthUrl, useShareTruth } from "@/hooks/useShareTruth";
 
 export default function LibraryScreen() {
   const truths = useVerses();
@@ -26,6 +26,7 @@ export default function LibraryScreen() {
   const custom = useCustomLibrary();
   const favorites = useFavorites();
   const share = useShareTruth();
+  const [customToast, setCustomToast] = useState("");
 
   const [filter, setFilter] = useState<LibraryFilter>({
     group: "truths",
@@ -59,11 +60,17 @@ export default function LibraryScreen() {
   const isCustom = (id: string) =>
     id.startsWith("custom-truth-") || id.startsWith("lie-custom-struggle-");
 
+  const flashCustomToast = (message: string) => {
+    setCustomToast(message);
+    setTimeout(() => setCustomToast(""), 1800);
+  };
+
   const shareCustom = async (truth: Truth) => {
-    const text = `"${truth.statement}" - ${truth.reference}`;
+    const url = truthUrl(truth.id);
+    const text = `"${truth.statement}" - ${truth.reference}\n${url}`;
     if (typeof navigator !== "undefined" && navigator.share) {
       try {
-        await navigator.share({ title: "What God Says About Me", text });
+        await navigator.share({ title: "What God Says About Me", text, url });
         return;
       } catch {
         // fall through
@@ -71,8 +78,9 @@ export default function LibraryScreen() {
     }
     try {
       await navigator.clipboard.writeText(text);
+      flashCustomToast("Link copied");
     } catch {
-      // no-op
+      flashCustomToast("Could not copy link");
     }
   };
 
@@ -147,11 +155,18 @@ export default function LibraryScreen() {
           ) : (
             <div className="flex flex-col items-center rounded-lg bg-surface p-[26px]">
               <p className="text-[15px] text-softInk">
-                No truths found for this filter.
+                {filter.group === "lies"
+                  ? "No struggles found for this filter."
+                  : "No truths found for this filter."}
               </p>
               <button
                 type="button"
-                onClick={() => setFilter({ group: "truths", category: null })}
+                onClick={() =>
+                  setFilter({
+                    group: filter.group === "lies" ? "lies" : "truths",
+                    category: null,
+                  })
+                }
                 className="mt-2 flex min-h-[44px] items-center font-extrabold text-accentDeep focus-ring"
               >
                 Reset filters
@@ -172,7 +187,7 @@ export default function LibraryScreen() {
           if (share.shareTruthId) void share.shareWithFriend(share.shareTruthId);
         }}
       />
-      <Toast message={share.toast} />
+      <Toast message={share.toast || customToast} />
 
       <CustomPromiseCompose
         visible={composeOpen}
