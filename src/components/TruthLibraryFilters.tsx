@@ -10,7 +10,7 @@ export type LibraryFilter = {
 };
 
 const truthOptions: { label: string; category: TruthCategory | null }[] = [
-  { label: "All identity truths", category: null },
+  { label: "All truths", category: null },
   { label: "Purpose", category: "Purpose" },
   { label: "Identity", category: "Identity" },
   { label: "Fear", category: "Fear" },
@@ -23,6 +23,7 @@ const truthOptions: { label: string; category: TruthCategory | null }[] = [
 
 const lieOptions: { label: string; category: TruthCategory | null }[] = [
   { label: "All struggles", category: null },
+  { label: "Purpose", category: "Purpose" },
   { label: "Fear", category: "Fear" },
   { label: "Anxiety", category: "Anxiety" },
   { label: "Rejection", category: "Rejection" },
