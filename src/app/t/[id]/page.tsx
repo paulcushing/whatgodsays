@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { use } from "react";
 
 import { ActionPill } from "@/components/ActionPill";
 import { ShareTruthCard } from "@/components/ShareTruthCard";
@@ -13,9 +12,9 @@ import { useShareTruth } from "@/hooks/useShareTruth";
 export default function TruthLinkScreen({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: { id: string };
 }) {
-  const { id } = use(params);
+  const { id } = params;
   const content = useContent();
   const truth = getShareableTruthById(id, content);
   const share = useShareTruth();
