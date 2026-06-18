@@ -22,9 +22,22 @@ const sans = Mulish({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://whatgodsaysabout.me"),
   title: "What God Says About You",
   description: "A beautiful sample of what Jesus says about YOU.",
   manifest: "/site.webmanifest",
+  openGraph: {
+    type: "website",
+    siteName: "What God Says About Me",
+    title: "What God Says About You",
+    description: "A beautiful sample of what Jesus says about YOU.",
+    url: "/",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "What God Says About You",
+    description: "A beautiful sample of what Jesus says about YOU.",
+  },
 };
 
 export const viewport: Viewport = {

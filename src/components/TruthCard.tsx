@@ -1,4 +1,5 @@
 import { ActionPill } from "@/components/ActionPill";
+import { BibleReferenceLink } from "@/components/BibleReferenceLink";
 import { SaveHeartButton } from "@/components/SaveHeartButton";
 import type { Truth } from "@/data/verseUtils";
 
@@ -32,7 +33,7 @@ export function TruthCard({
       <div className="mt-6 flex items-center gap-2.5">
         <span className="h-px w-6 bg-[#cdb89e]" />
         <span className="font-serif italic text-base text-accentDeep">
-          {truth.reference}
+          <BibleReferenceLink reference={truth.reference} className="focus-ring" />
         </span>
       </div>
       <p className="mt-5 text-base leading-[25px] text-softInk">{truth.verse}</p>

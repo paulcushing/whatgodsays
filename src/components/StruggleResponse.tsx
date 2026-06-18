@@ -1,6 +1,7 @@
 "use client";
 
 import { ActionPill } from "@/components/ActionPill";
+import { BibleReferenceLink } from "@/components/BibleReferenceLink";
 import { SaveHeartButton } from "@/components/SaveHeartButton";
 import type { Struggle } from "@/data/verseUtils";
 
@@ -65,7 +66,7 @@ export function StruggleResponse({
           {struggle.verses.map((verse) => (
             <div key={verse.reference} className="mt-3.5">
               <p className="font-serif italic text-base text-accentDeep">
-                {verse.reference}
+                <BibleReferenceLink reference={verse.reference} className="focus-ring" />
               </p>
               <p className="mt-1.5 text-[15px] leading-6 text-softInk">
                 {verse.verse}

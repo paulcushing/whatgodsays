@@ -1,6 +1,7 @@
 "use client";
 
 import { ActionPill } from "@/components/ActionPill";
+import { BibleReferenceLink } from "@/components/BibleReferenceLink";
 import type { Truth } from "@/data/verseUtils";
 import { truthUrl } from "@/hooks/useShareTruth";
 
@@ -51,7 +52,7 @@ export function ShareTruthCard({
           <div className="mt-5 flex items-center justify-center gap-2.5">
             <span className="h-px w-[22px] bg-[#cdb89e]" />
             <span className="font-serif italic text-base text-accentDeep">
-              {truth.reference}
+              <BibleReferenceLink reference={truth.reference} className="focus-ring" />
             </span>
           </div>
           <p className="mt-4 text-center text-sm leading-[23px] text-softInk">
