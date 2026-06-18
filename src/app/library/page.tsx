@@ -17,7 +17,7 @@ import { getShareableTruthById, truthFromStruggle } from "@/data/content";
 import type { Truth } from "@/data/verseUtils";
 import { useCustomLibrary } from "@/hooks/useCustomLibrary";
 import { useFavorites } from "@/hooks/useFavorites";
-import { truthUrl, useShareTruth } from "@/hooks/useShareTruth";
+import { useShareTruth } from "@/hooks/useShareTruth";
 
 export default function LibraryScreen() {
   const truths = useVerses();
@@ -66,11 +66,10 @@ export default function LibraryScreen() {
   };
 
   const shareCustom = async (truth: Truth) => {
-    const url = truthUrl(truth.id);
-    const text = `"${truth.statement}" - ${truth.reference}\n${url}`;
+    const text = `"${truth.statement}" - ${truth.reference}`;
     if (typeof navigator !== "undefined" && navigator.share) {
       try {
-        await navigator.share({ title: "What God Says About Me", text, url });
+        await navigator.share({ title: "What God Says About Me", text });
         return;
       } catch {
         // fall through

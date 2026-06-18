@@ -1,7 +1,7 @@
 import type { Truth } from "@/data/verseUtils";
 
 function dateKey(date: Date): string {
-  return date.toISOString().slice(0, 10);
+  return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 }
 
 function hash(input: string): number {

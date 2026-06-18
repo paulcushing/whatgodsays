@@ -24,6 +24,12 @@ describe("getDailyTruth", () => {
     expect(a.id).toBe(b.id);
   });
 
+  it("uses the local calendar day instead of the UTC day", () => {
+    const afternoon = getDailyTruth(new Date(2026, 2, 4, 16, 30), truths);
+    const evening = getDailyTruth(new Date(2026, 2, 4, 23, 30), truths);
+    expect(afternoon.id).toBe(evening.id);
+  });
+
   it("varies across dates", () => {
     const ids = new Set(
       ["2026-01-01", "2026-02-15", "2026-07-09", "2026-11-23"].map(
