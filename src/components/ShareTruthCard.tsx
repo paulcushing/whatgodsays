@@ -26,7 +26,7 @@ export function ShareTruthCard({
       onClick={onClose}
     >
       <div
-        className="w-full max-w-[480px] rounded-t-[30px] bg-page px-6 pb-7 pt-3.5"
+        className="max-h-[92dvh] w-full max-w-[480px] overflow-y-auto rounded-t-[30px] bg-page px-6 pb-7 pt-3.5"
         onClick={(event) => event.stopPropagation()}
       >
         <button

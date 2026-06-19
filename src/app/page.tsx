@@ -33,7 +33,7 @@ export default function TodayScreen() {
   const struggles = useStruggles();
   const favorites = useFavorites();
   const journal = useJournal();
-  const { settings } = useSettings();
+  const { settings, reload: reloadSettings } = useSettings();
   const share = useShareTruth();
 
   const now = new Date();
@@ -134,8 +134,11 @@ export default function TodayScreen() {
           onClick={() => setPickerOpen(true)}
           className="mt-6 block w-full rounded-xl bg-ink p-6 text-left shadow-card transition active:opacity-70 focus-ring"
         >
-          <span className="text-[11px] font-extrabold uppercase tracking-[1.5px] text-[#bfe0d6]">
+          <span className="flex items-center gap-1.5 text-[11px] font-extrabold uppercase tracking-[1.5px] text-[#bfe0d6]">
             When your heart is heavy
+            <span aria-hidden="true" className="text-sm leading-none">
+              {"→"}
+            </span>
           </span>
           <span className="mt-3 block font-serif text-[28px] leading-9 text-page">
             What lie are you believing?
@@ -148,7 +151,10 @@ export default function TodayScreen() {
 
       <PersonalizationPanel
         visible={settingsOpen}
-        onClose={() => setSettingsOpen(false)}
+        onClose={() => {
+          setSettingsOpen(false);
+          reloadSettings();
+        }}
       />
 
       <StruggleSheet
