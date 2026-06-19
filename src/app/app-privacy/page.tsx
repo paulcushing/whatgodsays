@@ -39,25 +39,23 @@ export default function Page() {
           <h1 className="text-[clamp(2rem,6vw,3rem)] leading-[1.1] font-extrabold mb-3">
             Privacy Policy
           </h1>
-          <p className="text-gray-600 text-[15px]">Effective June 13, 2026</p>
+          <p className="text-gray-600 text-[15px]">Effective June 19, 2026</p>
         </header>
 
         <p className="text-[17px] mb-4">
           We built <strong>What God Says About Me</strong> to do one thing:
           remind you of who God says you are. We want that to feel like a quiet,
-          trustworthy place — so we collect almost nothing, and we never sell or
-          share what little there is. This page explains exactly what happens to
-          your information when you use the app or the website at
-          whatgodsaysabout.me.
+          trustworthy place — so the app keeps your personal experience on your
+          own device. This page explains exactly what happens to your
+          information when you use the app or the website at whatgodsaysabout.me.
         </p>
 
         <div className="bg-gradient-to-r from-slate-100 to-white border-l-[6px] border-slate-400 rounded-lg px-5 py-4 my-6">
           <p className="text-[17px]">
-            <strong>The short version:</strong> Your name and personalization
-            settings stay on your own device — we never see them. The only
-            information that reaches us is what you type into the contact form,
-            and we use that solely to write you back. No tracking, no ads, no
-            selling your data. Ever.
+            <strong>The short version:</strong> Your name, personalization
+            settings, saved truths, custom promises, journal reflections, and
+            reminder preferences stay on your own device — we never see them. No
+            accounts, no analytics, no ads, and no selling your data. Ever.
           </p>
         </div>
 
@@ -65,42 +63,29 @@ export default function Page() {
           What stays on your device
         </h2>
         <p className="text-[17px] mb-4">
-          When you turn on personalization, the app saves a few preferences in
-          local storage on your phone so it can greet you by name next time:
+          The app saves preferences and user-created content in local storage on
+          your phone or browser so it can remember your experience:
         </p>
         <ul className="list-disc pl-[22px] text-[17px] space-y-1.5">
           <li>Your first name</li>
           <li>Your gender selection (used to adjust pronouns in the verses)</li>
           <li>Whether personalization is turned on</li>
+          <li>Your saved truth IDs</li>
+          <li>Your custom truths and custom struggle responses</li>
+          <li>Your journal reflections, including prompts and entry dates</li>
           <li>
-            A short list of recently shown verses, so the app avoids repeats
+            Your daily reminder time and whether reminders are enabled
+          </li>
+          <li>
+            A cached copy of the public truth and struggle content, plus a
+            content check timestamp and ETag
           </li>
         </ul>
         <p className="text-[17px] mt-4 mb-4">
           This information lives only on your device. It is never transmitted to
-          us or to anyone else. If you delete the app, it goes with it. You can
-          also clear it any time by turning personalization off or removing the
-          app.
-        </p>
-
-        <h2 className="text-2xl font-extrabold mt-10 mb-3">
-          What you choose to send us
-        </h2>
-        <p className="text-[17px] mb-4">
-          The only information that leaves your device is what you enter into the{" "}
-          <strong>Contact</strong> form, and only when you tap Send. That
-          includes:
-        </p>
-        <ul className="list-disc pl-[22px] text-[17px] space-y-1.5">
-          <li>Your name</li>
-          <li>Your email address</li>
-          <li>The message you write</li>
-        </ul>
-        <p className="text-[17px] mt-4 mb-4">
-          We use this strictly to read your message and reply to you. The form
-          is delivered through our own mail service at api.paulcushing.dev. We do
-          not add you to any marketing list, and we do not share your message
-          with third parties.
+          NDEVRS LLC. If you delete the app, it goes with it. You can also clear
+          local app data any time from Settings, delete individual journal
+          reflections, turn off reminders, or remove the app.
         </p>
 
         <h2 className="text-2xl font-extrabold mt-10 mb-3">What we don&apos;t do</h2>
@@ -112,22 +97,60 @@ export default function Page() {
             We don&apos;t require an account, and we don&apos;t build a profile
             on you.
           </li>
+          <li>We don&apos;t request or transmit push notification tokens.</li>
         </ul>
 
         <h2 className="text-2xl font-extrabold mt-10 mb-3">Verse content</h2>
         <p className="text-[17px] mb-4">
-          The app downloads its collection of verses from a static file hosted
-          on GitHub Pages. This is a simple, one-way download of public content —
-          no personal information is sent in that request.
+          The app includes a built-in collection of truths, Scripture
+          references, reflection prompts, and struggle responses. It may also
+          check{" "}
+          <a
+            href="https://whatgodsaysabout.me/content.json"
+            className="underline decoration-slate-400 decoration-2 underline-offset-2 hover:decoration-slate-600"
+          >
+            whatgodsaysabout.me/content.json
+          </a>{" "}
+          for updated public content. That request is a simple download of a
+          static JSON file. The app may send a standard ETag header so it can
+          avoid downloading the same file again, but it does not send your name,
+          personalization settings, saved truths, custom content, journal
+          entries, or reminder settings with that request.
+        </p>
+
+        <h2 className="text-2xl font-extrabold mt-10 mb-3">
+          Reminders and notifications
+        </h2>
+        <p className="text-[17px] mb-4">
+          Daily reminders are optional. The app asks for notification permission
+          only when you turn reminders on. Reminder settings are stored on your
+          device, and the notification itself is scheduled locally. We do not
+          send notification tokens to NDEVRS LLC, and we do not use push
+          notifications for marketing or tracking.
+        </p>
+
+        <h2 className="text-2xl font-extrabold mt-10 mb-3">
+          Sharing and links
+        </h2>
+        <p className="text-[17px] mb-4">
+          When you copy or share a built-in truth, the app creates a link such
+          as whatgodsaysabout.me/t/example-id and uses your device&apos;s
+          clipboard or native share sheet. Those tools are provided by your
+          device and operating system. Custom promises are shared as plain text
+          rather than uploaded to us. If you tap a Scripture reference, the app
+          opens Bible.com in your browser; Bible.com handles that visit under its
+          own privacy policy.
         </p>
 
         <h2 className="text-2xl font-extrabold mt-10 mb-3">Third parties</h2>
         <p className="text-[17px] mb-4">
           Because the app is distributed through the Apple App Store and Google
           Play, those platforms may collect their own diagnostic information
-          under their respective privacy policies. The contact form is processed
-          by our own email infrastructure. We do not integrate any other
-          third-party data collectors.
+          under their respective privacy policies. The privacy policy page on
+          the website loads Bricolage Grotesque from Google Fonts, so your
+          browser may connect to Google when viewing this page. We do not
+          integrate any third-party analytics, advertising, or data collection
+          tools into the app.
         </p>
 
         <h2 className="text-2xl font-extrabold mt-10 mb-3">
@@ -135,31 +158,31 @@ export default function Page() {
         </h2>
         <p className="text-[17px] mb-4">
           The app is not directed to children under 13, and we do not knowingly
-          collect personal information from them. If you believe a child has sent
-          us information through the contact form, please email us and we will
-          delete it.
+          collect personal information from them.
         </p>
 
         <h2 className="text-2xl font-extrabold mt-10 mb-3">
           How long we keep things
         </h2>
         <p className="text-[17px] mb-4">
-          On-device preferences remain until you remove them. Messages sent
-          through the contact form are kept only as long as needed to respond to
-          you and maintain a reasonable record of our correspondence, after which
-          they are deleted.
+          Because your personal app data stays on your device, NDEVRS LLC does
+          not keep a copy of it. On-device preferences and user-created content
+          remain until you remove them, clear local app data, or uninstall the
+          app.
         </p>
 
         <h2 className="text-2xl font-extrabold mt-10 mb-3">
           Your choices and rights
         </h2>
         <p className="text-[17px] mb-4">
-          You&apos;re in control of your information. You can clear all on-device
-          data by turning off personalization or uninstalling the app. To ask
-          what contact information we hold about you, or to request that we
-          delete it, just email us at the address below and we&apos;ll take care
-          of it. Depending on where you live, you may have additional rights
-          under laws such as the GDPR or CCPA; we honor those requests.
+          You&apos;re in control of your information. You can clear all local app
+          data from Settings, turn off personalization, turn off reminders,
+          delete individual journal reflections, or uninstall the app. Depending
+          on where you live, you may have additional rights under laws such as
+          the GDPR or CCPA. Since we do not keep a server-side account or
+          database of your app data, most access or deletion requests can be
+          handled directly on your device, but we will still honor applicable
+          privacy requests.
         </p>
 
         <h2 className="text-2xl font-extrabold mt-10 mb-3">Security</h2>
