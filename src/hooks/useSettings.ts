@@ -37,11 +37,16 @@ export function useSettings() {
     );
   }, []);
 
+  const reload = useCallback(() => {
+    setSettings(loadSettings());
+  }, []);
+
   return {
     ready: settings !== null,
     settings,
     setPersonalize,
     setName,
     setGender,
+    reload,
   };
 }
