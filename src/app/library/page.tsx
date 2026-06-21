@@ -5,7 +5,10 @@ import { useMemo, useState } from "react";
 import { ActionPill } from "@/components/ActionPill";
 import { AppShell } from "@/components/AppShell";
 import { BibleReferenceLink } from "@/components/BibleReferenceLink";
-import { CustomPromiseCompose } from "@/components/CustomPromiseCompose";
+import {
+  CustomPromiseCompose,
+  type ComposeEditing,
+} from "@/components/CustomPromiseCompose";
 import { SaveHeartButton } from "@/components/SaveHeartButton";
 import { ShareTruthCard } from "@/components/ShareTruthCard";
 import { Toast } from "@/components/Toast";
@@ -13,7 +16,6 @@ import { TruthLibraryFilters } from "@/components/TruthLibraryFilters";
 import { useContent, useStruggles, useVerses } from "@/data/ContentProvider";
 import { getShareableTruthById, truthFromStruggle } from "@/data/content";
 import { filterLibraryCards, type LibraryFilter } from "@/data/libraryFilters";
-import type { Truth } from "@/data/verseUtils";
 import { useCustomLibrary } from "@/hooks/useCustomLibrary";
 import { useFavorites } from "@/hooks/useFavorites";
 import { useShareTruth } from "@/hooks/useShareTruth";
@@ -33,6 +35,7 @@ export default function LibraryScreen() {
   });
   const [filterOpen, setFilterOpen] = useState(false);
   const [composeOpen, setComposeOpen] = useState(false);
+  const [editing, setEditing] = useState<ComposeEditing | null>(null);
 
   const truthCards = useMemo(
     () => [...custom.truths, ...truths],
@@ -62,22 +65,32 @@ export default function LibraryScreen() {
     setTimeout(() => setCustomToast(""), 1800);
   };
 
-  const shareCustom = async (truth: Truth) => {
-    const text = `"${truth.statement}" - ${truth.reference}`;
-    if (typeof navigator !== "undefined" && navigator.share) {
-      try {
-        await navigator.share({ title: "What God Says About Me", text });
-        return;
-      } catch {
-        // fall through
-      }
+  const openEdit = (id: string) => {
+    if (id.startsWith("lie-custom-struggle-")) {
+      const struggle = custom.struggles.find((s) => `lie-${s.id}` === id);
+      if (struggle) setEditing({ kind: "struggle", value: struggle });
+      return;
     }
-    try {
-      await navigator.clipboard.writeText(text);
-      flashCustomToast("Link copied");
-    } catch {
-      flashCustomToast("Could not copy link");
+    const truth = custom.truths.find((t) => t.id === id);
+    if (truth) setEditing({ kind: "truth", value: truth });
+  };
+
+  const closeEditor = () => {
+    setComposeOpen(false);
+    setEditing(null);
+  };
+
+  const deleteCustom = (entry: ComposeEditing) => {
+    const cardId =
+      entry.kind === "struggle" ? `lie-${entry.value.id}` : entry.value.id;
+    if (entry.kind === "struggle") {
+      custom.removeStruggle(entry.value.id);
+    } else {
+      custom.removeTruth(entry.value.id);
     }
+    if (favorites.isSaved(cardId)) favorites.toggleSaved(cardId);
+    closeEditor();
+    flashCustomToast("Deleted");
   };
 
   return (
@@ -137,16 +150,17 @@ export default function LibraryScreen() {
                     saved={favorites.isSaved(truth.id)}
                     onClick={() => favorites.toggleSaved(truth.id)}
                   />
-                  <ActionPill
-                    label="Share"
-                    onClick={() => {
-                      if (isCustom(truth.id)) {
-                        void shareCustom(truth);
-                        return;
-                      }
-                      share.openShareTruth(truth.id);
-                    }}
-                  />
+                  {isCustom(truth.id) ? (
+                    <ActionPill
+                      label="Edit"
+                      onClick={() => openEdit(truth.id)}
+                    />
+                  ) : (
+                    <ActionPill
+                      label="Share"
+                      onClick={() => share.openShareTruth(truth.id)}
+                    />
+                  )}
                 </div>
               </div>
             ))
@@ -186,18 +200,29 @@ export default function LibraryScreen() {
       <Toast message={share.toast || customToast} />
 
       <CustomPromiseCompose
-        visible={composeOpen}
-        onCancel={() => setComposeOpen(false)}
+        key={editing ? editing.value.id : "new"}
+        visible={composeOpen || editing !== null}
+        editing={editing ?? undefined}
+        onCancel={closeEditor}
         onSaveTruth={(truth) => {
           custom.addTruth(truth);
-          setComposeOpen(false);
+          closeEditor();
           setFilter({ group: null, category: truth.category });
         }}
         onSaveStruggle={(struggle) => {
           custom.addStruggle(struggle);
-          setComposeOpen(false);
+          closeEditor();
           setFilter({ group: null, category: struggle.category });
         }}
+        onUpdateTruth={(id, truth) => {
+          custom.updateTruth(id, truth);
+          closeEditor();
+        }}
+        onUpdateStruggle={(id, struggle) => {
+          custom.updateStruggle(id, struggle);
+          closeEditor();
+        }}
+        onDelete={deleteCustom}
       />
     </>
   );

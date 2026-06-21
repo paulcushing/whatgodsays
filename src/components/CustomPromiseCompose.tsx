@@ -8,6 +8,10 @@ type ComposeType = "truth" | "struggle";
 type AddTruthInput = Omit<Truth, "id">;
 type AddStruggleInput = Omit<Struggle, "id">;
 
+export type ComposeEditing =
+  | { kind: "truth"; value: Truth }
+  | { kind: "struggle"; value: Struggle };
+
 const truthCategories: TruthCategory[] = [
   "Purpose",
   "Identity",
@@ -48,20 +52,40 @@ const defaultStruggle: AddStruggleInput = {
   prayer: "",
 };
 
+function stripId<T extends { id: string }>(value: T): Omit<T, "id"> {
+  const { id, ...rest } = value;
+  void id;
+  return rest;
+}
+
 export function CustomPromiseCompose({
   visible,
   onCancel,
   onSaveTruth,
   onSaveStruggle,
+  editing,
+  onUpdateTruth,
+  onUpdateStruggle,
+  onDelete,
 }: {
   visible: boolean;
   onCancel: () => void;
   onSaveTruth: (truth: AddTruthInput) => void;
   onSaveStruggle: (struggle: AddStruggleInput) => void;
+  editing?: ComposeEditing;
+  onUpdateTruth?: (id: string, truth: AddTruthInput) => void;
+  onUpdateStruggle?: (id: string, struggle: AddStruggleInput) => void;
+  onDelete?: (editing: ComposeEditing) => void;
 }) {
-  const [type, setType] = useState<ComposeType>("truth");
-  const [truth, setTruth] = useState<AddTruthInput>(defaultTruth);
-  const [struggle, setStruggle] = useState<AddStruggleInput>(defaultStruggle);
+  const isEditing = Boolean(editing);
+  const [type, setType] = useState<ComposeType>(editing?.kind ?? "truth");
+  const [truth, setTruth] = useState<AddTruthInput>(
+    editing?.kind === "truth" ? stripId(editing.value) : defaultTruth,
+  );
+  const [struggle, setStruggle] = useState<AddStruggleInput>(
+    editing?.kind === "struggle" ? stripId(editing.value) : defaultStruggle,
+  );
+  const [confirmDelete, setConfirmDelete] = useState(false);
 
   if (!visible) return null;
 
@@ -93,16 +117,21 @@ export function CustomPromiseCompose({
   const save = () => {
     if (!canSave) return;
     if (type === "truth") {
-      onSaveTruth({
+      const payload: AddTruthInput = {
         ...truth,
         statement: truth.statement.trim(),
         reference: truth.reference.trim(),
         verse: truth.verse.trim(),
         reflectionQuestion: truth.reflectionQuestion.trim(),
         journalPrompt: truth.journalPrompt.trim(),
-      });
+      };
+      if (editing?.kind === "truth") {
+        onUpdateTruth?.(editing.value.id, payload);
+      } else {
+        onSaveTruth(payload);
+      }
     } else {
-      onSaveStruggle({
+      const payload: AddStruggleInput = {
         ...struggle,
         label: struggle.label.trim(),
         lie: struggle.lie.trim(),
@@ -115,7 +144,12 @@ export function CustomPromiseCompose({
         ],
         reflection: struggle.reflection.trim(),
         prayer: struggle.prayer.trim(),
-      });
+      };
+      if (editing?.kind === "struggle") {
+        onUpdateStruggle?.(editing.value.id, payload);
+      } else {
+        onSaveStruggle(payload);
+      }
     }
     reset();
   };
@@ -125,32 +159,46 @@ export function CustomPromiseCompose({
     onCancel();
   };
 
+  const remove = () => {
+    if (!editing) return;
+    if (!confirmDelete) {
+      setConfirmDelete(true);
+      return;
+    }
+    onDelete?.(editing);
+    reset();
+  };
+
   return (
     <div className="fixed inset-0 z-50 flex justify-center bg-page">
       <div className="w-full max-w-[480px] overflow-y-auto px-6 pb-11 pt-[max(env(safe-area-inset-top),48px)]">
         <p className="text-[11px] font-bold uppercase tracking-[1.6px] text-accent">
-          Add your own promise
+          {isEditing ? "Edit your promise" : "Add your own promise"}
         </p>
         <h1 className="mt-2.5 font-serif text-[30px] leading-[38px] text-scriptureInk">
-          Create a custom truth or struggle
+          {isEditing
+            ? `Edit this custom ${type}`
+            : "Create a custom truth or struggle"}
         </h1>
         <p className="mt-2.5 text-sm leading-[21px] text-softInk">
           Include Scripture, a clear statement, and a reflection prompt so this
           entry is complete and useful later.
         </p>
 
-        <div className="mt-[18px] flex gap-2.5">
-          <TypeButton
-            label="Truth"
-            active={type === "truth"}
-            onClick={() => setType("truth")}
-          />
-          <TypeButton
-            label="Struggle"
-            active={type === "struggle"}
-            onClick={() => setType("struggle")}
-          />
-        </div>
+        {!isEditing && (
+          <div className="mt-[18px] flex gap-2.5">
+            <TypeButton
+              label="Truth"
+              active={type === "truth"}
+              onClick={() => setType("truth")}
+            />
+            <TypeButton
+              label="Struggle"
+              active={type === "struggle"}
+              onClick={() => setType("struggle")}
+            />
+          </div>
+        )}
 
         {type === "truth" ? (
           <div className="mt-[18px] flex flex-col gap-2">
@@ -290,7 +338,20 @@ export function CustomPromiseCompose({
           </div>
         )}
 
-        <div className="mt-[22px] flex justify-end gap-3">
+        <div className="mt-[22px] flex flex-wrap items-center justify-end gap-3">
+          {isEditing && (
+            <button
+              type="button"
+              onClick={remove}
+              className={`mr-auto flex min-h-[48px] items-center rounded-full px-[18px] text-[15px] font-bold focus-ring ${
+                confirmDelete
+                  ? "bg-danger text-page"
+                  : "border border-danger text-danger"
+              }`}
+            >
+              {confirmDelete ? "Tap again to delete" : "Delete"}
+            </button>
+          )}
           <button
             type="button"
             onClick={cancel}
@@ -306,7 +367,7 @@ export function CustomPromiseCompose({
               canSave ? "bg-ink text-page" : "bg-tint text-mutedInk"
             }`}
           >
-            Add
+            {isEditing ? "Save" : "Add"}
           </button>
         </div>
       </div>
