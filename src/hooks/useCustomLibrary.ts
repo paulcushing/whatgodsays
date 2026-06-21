@@ -34,6 +34,30 @@ export function useCustomLibrary() {
     return nextTruth;
   }, []);
 
+  const updateTruth = useCallback((id: string, truth: AddTruthInput) => {
+    setContent((current) => {
+      const next = {
+        ...current,
+        truths: current.truths.map((item) =>
+          item.id === id ? { ...truth, id } : item,
+        ),
+      };
+      saveCustomLibraryContent(next);
+      return next;
+    });
+  }, []);
+
+  const removeTruth = useCallback((id: string) => {
+    setContent((current) => {
+      const next = {
+        ...current,
+        truths: current.truths.filter((item) => item.id !== id),
+      };
+      saveCustomLibraryContent(next);
+      return next;
+    });
+  }, []);
+
   const addStruggle = useCallback((struggle: AddStruggleInput) => {
     const nextStruggle: Struggle = {
       ...struggle,
@@ -50,11 +74,42 @@ export function useCustomLibrary() {
     return nextStruggle;
   }, []);
 
+  const updateStruggle = useCallback(
+    (id: string, struggle: AddStruggleInput) => {
+      setContent((current) => {
+        const next = {
+          ...current,
+          struggles: current.struggles.map((item) =>
+            item.id === id ? { ...struggle, id } : item,
+          ),
+        };
+        saveCustomLibraryContent(next);
+        return next;
+      });
+    },
+    [],
+  );
+
+  const removeStruggle = useCallback((id: string) => {
+    setContent((current) => {
+      const next = {
+        ...current,
+        struggles: current.struggles.filter((item) => item.id !== id),
+      };
+      saveCustomLibraryContent(next);
+      return next;
+    });
+  }, []);
+
   return {
     ready,
     truths: content.truths,
     struggles: content.struggles,
     addTruth,
+    updateTruth,
+    removeTruth,
     addStruggle,
+    updateStruggle,
+    removeStruggle,
   };
 }

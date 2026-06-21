@@ -5,6 +5,10 @@ import { useState } from "react";
 import { ActionPill } from "@/components/ActionPill";
 import { AppShell } from "@/components/AppShell";
 import { BibleReferenceLink } from "@/components/BibleReferenceLink";
+import {
+  CustomPromiseCompose,
+  type ComposeEditing,
+} from "@/components/CustomPromiseCompose";
 import { SaveHeartButton } from "@/components/SaveHeartButton";
 import { ShareTruthCard } from "@/components/ShareTruthCard";
 import { Toast } from "@/components/Toast";
@@ -21,6 +25,7 @@ export default function FavoritesScreen() {
   const custom = useCustomLibrary();
   const share = useShareTruth();
   const [customToast, setCustomToast] = useState("");
+  const [editing, setEditing] = useState<ComposeEditing | null>(null);
 
   const resolveSavedTruth = (id: string): Truth | undefined => {
     if (id.startsWith("lie-")) {
@@ -42,22 +47,27 @@ export default function FavoritesScreen() {
     setTimeout(() => setCustomToast(""), 1800);
   };
 
-  const shareCustom = async (truth: Truth) => {
-    const text = `"${truth.statement}" - ${truth.reference}`;
-    if (typeof navigator !== "undefined" && navigator.share) {
-      try {
-        await navigator.share({ title: "What God Says About Me", text });
-        return;
-      } catch {
-        // fall through
-      }
+  const openEdit = (id: string) => {
+    if (id.startsWith("lie-custom-struggle-")) {
+      const struggle = custom.struggles.find((s) => `lie-${s.id}` === id);
+      if (struggle) setEditing({ kind: "struggle", value: struggle });
+      return;
     }
-    try {
-      await navigator.clipboard.writeText(text);
-      flashCustomToast("Link copied");
-    } catch {
-      flashCustomToast("Could not copy link");
+    const truth = custom.truths.find((t) => t.id === id);
+    if (truth) setEditing({ kind: "truth", value: truth });
+  };
+
+  const deleteCustom = (entry: ComposeEditing) => {
+    const cardId =
+      entry.kind === "struggle" ? `lie-${entry.value.id}` : entry.value.id;
+    if (entry.kind === "struggle") {
+      custom.removeStruggle(entry.value.id);
+    } else {
+      custom.removeTruth(entry.value.id);
     }
+    if (favorites.isSaved(cardId)) favorites.toggleSaved(cardId);
+    setEditing(null);
+    flashCustomToast("Deleted");
   };
 
   const savedTruths = favorites.savedIds
@@ -99,17 +109,19 @@ export default function FavoritesScreen() {
                     saved
                     onClick={() => favorites.toggleSaved(truth.id)}
                   />
-                  <ActionPill
-                    label="Share"
-                    variant="tint"
-                    onClick={() => {
-                      if (isCustom(truth.id)) {
-                        void shareCustom(truth);
-                        return;
-                      }
-                      share.openShareTruth(truth.id);
-                    }}
-                  />
+                  {isCustom(truth.id) ? (
+                    <ActionPill
+                      label="Edit"
+                      variant="tint"
+                      onClick={() => openEdit(truth.id)}
+                    />
+                  ) : (
+                    <ActionPill
+                      label="Share"
+                      variant="tint"
+                      onClick={() => share.openShareTruth(truth.id)}
+                    />
+                  )}
                 </div>
               </div>
             ))
@@ -138,6 +150,24 @@ export default function FavoritesScreen() {
         }}
       />
       <Toast message={share.toast || customToast} />
+
+      <CustomPromiseCompose
+        key={editing ? editing.value.id : "new"}
+        visible={editing !== null}
+        editing={editing ?? undefined}
+        onCancel={() => setEditing(null)}
+        onSaveTruth={() => setEditing(null)}
+        onSaveStruggle={() => setEditing(null)}
+        onUpdateTruth={(id, truth) => {
+          custom.updateTruth(id, truth);
+          setEditing(null);
+        }}
+        onUpdateStruggle={(id, struggle) => {
+          custom.updateStruggle(id, struggle);
+          setEditing(null);
+        }}
+        onDelete={deleteCustom}
+      />
     </>
   );
 }
